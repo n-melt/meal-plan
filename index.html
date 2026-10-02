@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#f5f2ea" />
+<title>Weekly Meal Planner</title>
+<style>
+  :root{
+    --bg:#f5f2ea; --card:#fffdf8; --ink:#20221f; --muted:#6f746d; --line:#d9d7cf;
+    --accent:#355f4b; --accent2:#dfe9e2; --warn:#9a5d21; --danger:#a13f3f; --ok:#2e6e48;
+    --shadow:0 8px 24px rgba(32,34,31,.08); --radius:18px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.45}
+  button,input{font:inherit}
+  .shell{max-width:1120px;margin:auto;padding:20px 16px 64px}
+  header{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end;margin-bottom:18px}
+  h1{margin:0;font-size:clamp(1.65rem,4vw,2.6rem);letter-spacing:-.03em}
+  .sub{color:var(--muted);margin-top:6px;font-size:.95rem}
+  .pill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 11px;font-size:.86rem}
+  .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+  .metric{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 14px;box-shadow:var(--shadow)}
+  .metric b{display:block;font-size:1.15rem;margin-top:2px}.metric span{color:var(--muted);font-size:.8rem}
+  .budgetbar{height:9px;background:#e3e2dd;border-radius:999px;overflow:hidden;margin-top:8px}.budgetbar>div{height:100%;background:var(--accent);width:0;transition:.2s}
+  .notice{border-left:4px solid var(--warn);background:#fff8ee;padding:11px 13px;border-radius:10px;margin:14px 0;color:#5f4b34;font-size:.9rem}
+  nav{display:flex;gap:7px;overflow:auto;padding-bottom:6px;position:sticky;top:0;background:linear-gradient(var(--bg) 78%,transparent);z-index:20;padding-top:8px}
+  nav button{white-space:nowrap;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:9px 13px;color:var(--ink)}
+  nav button.active{background:var(--accent);color:white;border-color:var(--accent)}
+  section{display:none;margin-top:16px}section.active{display:block}
+  .toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .toolbar .left,.toolbar .right{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .btn{border:0;border-radius:12px;padding:10px 14px;background:var(--accent);color:#fff;font-weight:650;cursor:pointer}
+  .btn.secondary{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+  .meal-card{position:relative;transition:.15s}.meal-card.selected{border:2px solid var(--accent);padding:15px}
+  .meal-top{display:flex;gap:12px;justify-content:space-between;align-items:flex-start}
+  .meal-title{font-weight:760;font-size:1.06rem}.meta{color:var(--muted);font-size:.84rem;margin-top:3px}
+  .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.tag{background:var(--accent2);color:#244838;border-radius:999px;padding:4px 8px;font-size:.74rem;font-weight:650}.tag.new{background:#fff0ce;color:#7a4e05}
+  .selectbox{width:28px;height:28px;accent-color:var(--accent);flex:none}
+  .desc{margin:11px 0 0;color:#454943;font-size:.91rem}
+  .price{font-weight:700;margin-top:10px}.small{font-size:.8rem;color:var(--muted)}
+  .list-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px}
+  .checkrow{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;padding:10px 0;border-bottom:1px solid #eceae3}.checkrow:last-child{border-bottom:0}.checkrow input{width:20px;height:20px;accent-color:var(--accent)}
+  .amount{color:var(--muted);font-size:.86rem;text-align:right}.shared{font-weight:800}.storeHead{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;padding:0 14px}summary{cursor:pointer;font-weight:750;padding:14px 0}.recipeBody{padding:0 0 14px}.recipeBody ol{padding-left:21px}.recipeBody li{margin:6px 0}
+  .empty{padding:28px;text-align:center;color:var(--muted);background:var(--card);border:1px dashed var(--line);border-radius:14px}
+  .footerNote{margin-top:26px;color:var(--muted);font-size:.8rem}
+  .danger{color:var(--danger)} .ok{color:var(--ok)}
+  @media(max-width:760px){header{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.shell{padding:14px 12px 54px}.card{padding:14px}.meal-card.selected{padding:13px}.desktopOnly{display:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header>
+    <div>
+      <h1>Weekly Meal Planner</h1>
+      <div class="sub">Select any number of the weekly meal options. Finalizing hides unselected meals and rebuilds the grocery and recipe views from only your selections.</div>
+    </div>
+    <div class="pill">Nashville · household of 2 · 4 portions/meal</div>
+  </header>
+
+  <div class="summary">
+    <div class="metric"><span>Selected meals</span><b id="selectedCount">0</b></div>
+    <div class="metric"><span>Candidate meals</span><b id="candidateCount">0</b></div>
+    <div class="metric"><span>Estimated selected basket</span><b id="basketTotal">—</b><div class="budgetbar"><div id="budgetFill"></div></div></div>
+    <div class="metric"><span>Weekly target</span><b>$100</b><span id="budgetVariance">No weekly data loaded</span></div>
+  </div>
+
+  <div class="notice"><b>Base template:</b> no weekly meal plan is embedded in this file. Weekly meal data can be injected later by your update pipeline. Prices should remain explicitly estimated or unknown until verified for the intended shopping date.</div>
+
+  <nav id="tabs">
+    <button data-tab="choose" class="active">1 · Choose meals</button>
+    <button data-tab="full">2 · Full list</button>
+    <button data-tab="meal">3 · By meal</button>
+    <button data-tab="store">4 · By store</button>
+    <button data-tab="recipes">5 · Recipes</button>
+  </nav>
+
+  <section id="choose" class="active">
+    <div class="toolbar">
+      <div class="left"><b id="choosePrompt">No weekly meal options loaded</b><span class="small">When options are loaded, you may select any number from 0 to all available meals.</span></div>
+      <div class="right"><button class="btn secondary" id="resetBtn">Reset</button><button class="btn" id="finalizeBtn" disabled>Finalize selections</button></div>
+    </div>
+    <div id="mealGrid" class="grid"></div>
+  </section>
+
+  <section id="full"><div class="toolbar"><b>Consolidated purchasing list</b><span class="small">Shared ingredients are merged once.</span></div><div id="fullList"></div></section>
+  <section id="meal"><div class="toolbar"><b>Ingredients by selected meal</b><span class="small">Ingredients used in multiple meals are bold.</span></div><div id="mealList"></div></section>
+  <section id="store"><div class="toolbar"><b>Shopping list by store</b><span class="small">Primary in-store checklist view.</span></div><div id="storeList"></div></section>
+  <section id="recipes"><div class="toolbar"><b>Recipes</b><span class="small">Only selected meals are shown after finalization.</span></div><div id="recipeList"></div></section>
+
+  <div class="footerNote">Base template · selection and checklist state are stored locally in this browser/device. Cross-device synchronization is not included in this static GitHub Pages version.</div>
+</div>
+
+<script>
+/*
+  BASE DATA CONTRACT
+  ------------------
+  This file intentionally contains no weekly meal plan.
+
+  A future update step may assign an array of meal objects to:
+      window.WEEKLY_MEALS
+
+  before this script executes, or call:
+      window.loadWeeklyMeals(meals)
+
+  after page load.
+
+  Expected meal shape:
+  {
+    id: 'unique-id',
+    name: 'Meal name',
+    cuisine: 'Cuisine',
+    protein: 70,
+    cost: 14.50,              // optional; null/omit if unknown
+    tags: ['NEW'],            // optional
+    desc: 'Short description',
+    ingredients: [
+      ['ingredient', 2, 'lb', 'ALDI']
+    ],
+    steps: ['Step one', 'Step two']
+  }
+*/
+
+const WEEKLY_BUDGET = 100;
+let meals = Array.isArray(window.WEEKLY_MEALS) ? window.WEEKLY_MEALS : [];
+
+let state = JSON.parse(localStorage.getItem('baseMealPlannerState') || '{}');
+state.selected = Array.isArray(state.selected) ? state.selected : [];
+state.finalized = !!state.finalized;
+state.checked = state.checked || {};
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const money = n => '$' + Number(n).toFixed(2);
+
+function save(){ localStorage.setItem('baseMealPlannerState', JSON.stringify(state)); }
+function selectedMeals(){ return meals.filter(m => state.selected.includes(m.id)); }
+function ingredientKey(name){ return String(name).toLowerCase().trim(); }
+
+function normalizeStateToCurrentMeals(){
+  const validIds = new Set(meals.map(m => m.id));
+  state.selected = state.selected.filter(id => validIds.has(id));
+  if(!state.selected.length) state.finalized = false;
+  save();
+}
+
+function renderMeals(){
+  const grid = $('#mealGrid');
+  grid.innerHTML = '';
+
+  if(!meals.length){
+    grid.innerHTML = '<div class="empty" style="grid-column:1/-1">No weekly meal options are loaded. This is the reusable base interface.</div>';
+    $('#choosePrompt').textContent = 'No weekly meal options loaded';
+    $('#finalizeBtn').disabled = true;
+    $('#finalizeBtn').textContent = 'Finalize selections';
+    return;
+  }
+
+  meals.forEach(m => {
+    if(state.finalized && !state.selected.includes(m.id)) return;
+    const selected = state.selected.includes(m.id);
+    const card = document.createElement('article');
+    card.className = 'card meal-card' + (selected ? ' selected' : '');
+
+    const tags = Array.isArray(m.tags) ? m.tags : [];
+    const proteinText = Number.isFinite(Number(m.protein)) ? ` · ~${Number(m.protein)} g protein/person` : '';
+    const costText = Number.isFinite(Number(m.cost)) ? `~${money(m.cost)} <span class="small">estimated ingredient allocation</span>` : '<span class="small">Cost pending</span>';
+
+    card.innerHTML = `<div class="meal-top"><div><div class="meal-title">${m.name || 'Unnamed meal'}</div><div class="meta">${m.cuisine || 'Cuisine not specified'} · 4 portions${proteinText}</div></div><input class="selectbox" type="checkbox" aria-label="Select ${m.name || 'meal'}" ${selected?'checked':''} ${state.finalized?'disabled':''}></div>
+      <div class="tags">${tags.map(t=>`<span class="tag ${String(t).toUpperCase()==='NEW'?'new':''}">${t}</span>`).join('')}</div>
+      <p class="desc">${m.desc || ''}</p><div class="price">${costText}</div>`;
+
+    card.querySelector('input').addEventListener('change', e => toggleMeal(m.id, e.target.checked));
+    grid.appendChild(card);
+  });
+
+  $('#choosePrompt').textContent = state.finalized
+    ? `${state.selected.length} meal${state.selected.length===1?'':'s'} selected`
+    : `Select any number of ${meals.length} meal options`;
+
+  $('#finalizeBtn').textContent = state.finalized ? 'Change selections' : 'Finalize selections';
+  $('#finalizeBtn').disabled = !state.finalized && state.selected.length === 0;
+}
+
+function toggleMeal(id, checked){
+  if(checked){
+    if(!state.selected.includes(id)) state.selected.push(id);
+  } else {
+    state.selected = state.selected.filter(x => x !== id);
+  }
+  state.finalized = false;
+  save();
+  renderAll();
+}
+
+function aggregate(){
+  const map = {};
+  selectedMeals().forEach(m => (m.ingredients || []).forEach(([name,qty,unit,store]) => {
+    const k = ingredientKey(name);
+    if(!map[k]) map[k] = {name, qty:0, unit:unit || '', store:store || 'Store not assigned', meals:[]};
+    map[k].qty += Number(qty) || 0;
+    map[k].meals.push(m.id);
+  }));
+  return Object.values(map).sort((a,b) => a.store.localeCompare(b.store) || a.name.localeCompare(b.name));
+}
+
+function usageCounts(){
+  const counts = {};
+  selectedMeals().forEach(m => (m.ingredients || []).forEach(([name]) => {
+    const k = ingredientKey(name);
+    counts[k] = (counts[k] || 0) + 1;
+  }));
+  return counts;
+}
+
+function checkKey(scope,name){ return scope + '::' + ingredientKey(name); }
+function checkRow(item,scope){
+  const key = checkKey(scope,item.name);
+  const checked = !!state.checked[key];
+  return `<div class="checkrow"><input type="checkbox" data-checkkey="${key}" ${checked?'checked':''}><div>${item.shared?'<span class="shared">'+item.name+'</span>':item.name}<div class="small">${item.note||''}</div></div><div class="amount">${item.qty} ${item.unit}</div></div>`;
+}
+function wireChecks(){
+  $$('[data-checkkey]').forEach(el => el.addEventListener('change', () => {
+    state.checked[el.dataset.checkkey] = el.checked;
+    save();
+  }));
+}
+
+function renderFull(){
+  const host = $('#fullList');
+  if(!state.selected.length){ host.innerHTML='<div class="empty">Select one or more meals to build the purchasing list.</div>'; return; }
+  const items = aggregate();
+  host.innerHTML = items.length ? `<div class="list-card">${items.map(i=>checkRow(i,'full')).join('')}</div>` : '<div class="empty">Selected meals do not contain ingredient data.</div>';
+  wireChecks();
+}
+
+function renderByMeal(){
+  const host = $('#mealList'), counts = usageCounts();
+  if(!state.selected.length){ host.innerHTML='<div class="empty">Select one or more meals to view ingredients by meal.</div>'; return; }
+  host.innerHTML = selectedMeals().map(m => {
+    const ingredients = m.ingredients || [];
+    return `<div class="list-card"><b>${m.name}</b><div class="small">4 adult portions${Number.isFinite(Number(m.protein)) ? ` · ~${Number(m.protein)} g protein/person` : ''}</div>${ingredients.length ? ingredients.map(([name,qty,unit])=>checkRow({name,qty,unit,shared:counts[ingredientKey(name)]>1},'meal-'+m.id)).join('') : '<div class="small" style="margin-top:10px">No ingredient data loaded.</div>'}</div>`;
+  }).join('');
+  wireChecks();
+}
+
+function renderByStore(){
+  const host = $('#storeList');
+  if(!state.selected.length){ host.innerHTML='<div class="empty">Select one or more meals to create a store-sorted checklist.</div>'; return; }
+  const groups = {};
+  aggregate().forEach(i => (groups[i.store] ??= []).push(i));
+  const entries = Object.entries(groups);
+  host.innerHTML = entries.length ? entries.map(([store,items]) => `<div class="list-card"><div class="storeHead"><b>${store}</b><span class="small">prices pending weekly verification</span></div>${items.map(i=>checkRow(i,'store-'+store)).join('')}</div>`).join('') : '<div class="empty">Selected meals do not contain store-assigned ingredients.</div>';
+  wireChecks();
+}
+
+function renderRecipes(){
+  const host = $('#recipeList');
+  if(!state.selected.length){ host.innerHTML='<div class="empty">Select one or more meals to view recipes.</div>'; return; }
+  host.innerHTML = selectedMeals().map(m => {
+    const ingredients = m.ingredients || [];
+    const steps = m.steps || [];
+    const proteinLine = Number.isFinite(Number(m.protein))
+      ? `<div class="small">Estimated protein: ~${Number(m.protein)} g/person ${Number(m.protein)<80?'<span class="danger">· below 80 g target</span>':'<span class="ok">· at/above target</span>'}</div>`
+      : '';
+    return `<details><summary>${m.name} · 4 portions</summary><div class="recipeBody">${proteinLine}<h4>Ingredients</h4>${ingredients.length?`<ul>${ingredients.map(([n,q,u])=>`<li>${q} ${u} ${n}</li>`).join('')}</ul>`:'<div class="small">No ingredient data loaded.</div>'}<h4>Method</h4>${steps.length?`<ol>${steps.map(s=>`<li>${s}</li>`).join('')}</ol>`:'<div class="small">No recipe steps loaded.</div>'}</div></details>`;
+  }).join('');
+}
+
+function renderSummary(){
+  $('#selectedCount').textContent = state.selected.length;
+  $('#candidateCount').textContent = meals.length;
+
+  const selected = selectedMeals();
+  const knownCosts = selected.filter(m => Number.isFinite(Number(m.cost)));
+  const allSelectedCostsKnown = selected.length > 0 && knownCosts.length === selected.length;
+  const total = knownCosts.reduce((sum,m) => sum + Number(m.cost), 0);
+
+  if(!selected.length){
+    $('#basketTotal').textContent = '—';
+    $('#budgetFill').style.width = '0%';
+    $('#budgetVariance').textContent = meals.length ? 'Select meals to estimate' : 'No weekly data loaded';
+    $('#budgetVariance').className = '';
+    return;
+  }
+
+  $('#basketTotal').textContent = allSelectedCostsKnown ? money(total) : `${money(total)} + unknowns`;
+  $('#budgetFill').style.width = Math.min(100,total/WEEKLY_BUDGET*100) + '%';
+
+  if(!allSelectedCostsKnown){
+    $('#budgetVariance').textContent = 'Incomplete cost estimate';
+    $('#budgetVariance').className = 'danger';
+    return;
+  }
+
+  const variance = WEEKLY_BUDGET - total;
+  $('#budgetVariance').textContent = variance >= 0 ? money(variance) + ' under target' : money(Math.abs(variance)) + ' over target';
+  $('#budgetVariance').className = variance >= 0 ? 'ok' : 'danger';
+}
+
+function renderAll(){
+  normalizeStateToCurrentMeals();
+  renderMeals();
+  renderSummary();
+  renderFull();
+  renderByMeal();
+  renderByStore();
+  renderRecipes();
+}
+
+$('#finalizeBtn').addEventListener('click', () => {
+  if(state.finalized){
+    state.finalized = false;
+    save();
+    renderAll();
+    return;
+  }
+  if(state.selected.length === 0) return;
+  state.finalized = true;
+  save();
+  renderAll();
+});
+
+$('#resetBtn').addEventListener('click', () => {
+  if(confirm('Clear meal selections and checklist state for this browser?')){
+    state = {selected:[], finalized:false, checked:{}};
+    save();
+    renderAll();
+  }
+});
+
+$$('#tabs button').forEach(btn => btn.addEventListener('click', () => {
+  $$('#tabs button').forEach(b => b.classList.remove('active'));
+  $$('section').forEach(s => s.classList.remove('active'));
+  btn.classList.add('active');
+  $('#' + btn.dataset.tab).classList.add('active');
+}));
+
+window.loadWeeklyMeals = function(newMeals){
+  meals = Array.isArray(newMeals) ? newMeals : [];
+  state.finalized = false;
+  normalizeStateToCurrentMeals();
+  renderAll();
+};
+
+renderAll();
+</script>
+</body>
+</html>
