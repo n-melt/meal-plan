@@ -141,7 +141,7 @@
 
 <script>
 const WEEKLY_BUDGET = 100;
-let meals = Array.isArray(window.weekly-plan) ? window.weekly-plan : [];
+let meals = Array.isArray(window.WEEKLY_MEALS) ? window.WEEKLY_MEALS : [];
 const mealHistory = Array.isArray(window.MEAL_HISTORY) ? window.MEAL_HISTORY : [];
 
 let state;
@@ -195,7 +195,7 @@ function renderMeals(){
   grid.innerHTML = '';
 
   if(!meals.length){
-    grid.innerHTML = '<div class="empty" style="grid-column:1/-1">No weekly meal options are loaded. Check that weekly-plan.js is present in the repository root and defines window.weekly-plan.</div>';
+    grid.innerHTML = '<div class="empty" style="grid-column:1/-1">No weekly meal options are loaded. Check that WEEKLY_MEALS.js is present in the repository root and defines window.WEEKLY_MEALS.</div>';
     $('#choosePrompt').textContent = 'No weekly meal options loaded';
     $('#finalizeBtn').disabled = true;
     $('#finalizeBtn').textContent = 'Finalize selections';
