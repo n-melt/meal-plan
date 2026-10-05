@@ -66,10 +66,20 @@
   .footerNote{margin-top:26px;color:var(--muted);font-size:.8rem}
   .danger{color:var(--danger)}
   .ok{color:var(--ok)}
+
+  /* Archive GUI only */
+  .history-week{margin-bottom:12px}
+  .history-week > summary{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+  .history-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding-bottom:14px}
+  .history-meal{border:1px solid #eceae3;border-radius:12px;padding:12px;background:#fff}
+  .history-meal h3{font-size:.98rem;margin:0 0 4px}
+  .history-meal details{margin-top:10px;margin-bottom:0;background:transparent;box-shadow:none}
+  .history-meal details summary{font-size:.88rem;padding:9px 0}
+
   @media(max-width:760px){
     header{grid-template-columns:1fr}
     .summary{grid-template-columns:repeat(2,1fr)}
-    .grid{grid-template-columns:1fr}
+    .grid,.history-grid{grid-template-columns:1fr}
     .shell{padding:14px 12px 54px}
     .card{padding:14px}
     .meal-card.selected{padding:13px}
@@ -101,6 +111,7 @@
     <button data-tab="meal">3 · By meal</button>
     <button data-tab="store">4 · By store</button>
     <button data-tab="recipes">5 · Recipes</button>
+    <button data-tab="history">6 · Past weeks</button>
   </nav>
 
   <section id="choose" class="active">
@@ -121,6 +132,7 @@
   <section id="meal"><div class="toolbar"><b>Ingredients by selected meal</b><span class="small">Ingredients used in multiple meals are bold.</span></div><div id="mealList"></div></section>
   <section id="store"><div class="toolbar"><b>Shopping list by store</b><span class="small">Primary in-store checklist view.</span></div><div id="storeList"></div></section>
   <section id="recipes"><div class="toolbar"><b>Recipes</b><span class="small">Only selected meals are shown after finalization.</span></div><div id="recipeList"></div></section>
+  <section id="history"><div class="toolbar"><b>Past weeks</b><span class="small">Complete archived 10-meal weekly plans.</span></div><div id="historyList"></div></section>
 
   <div class="footerNote">Selection and checklist state are stored locally in this browser/device. Cross-device synchronization is not included.</div>
 </div>
@@ -131,6 +143,7 @@
 <script>
 const WEEKLY_BUDGET = 100;
 let meals = Array.isArray(window.WEEKLY_MEALS) ? window.WEEKLY_MEALS : [];
+const mealHistory = Array.isArray(window.MEAL_HISTORY) ? window.MEAL_HISTORY : [];
 
 let state;
 try {
@@ -444,6 +457,62 @@ function renderSummary(){
   $('#budgetVariance').className = variance >= 0 ? 'ok' : 'danger';
 }
 
+/* Archive GUI only */
+function renderHistory(){
+  const host = $('#historyList');
+
+  if(!mealHistory.length){
+    host.innerHTML = '<div class="empty">No archived weeks are available.</div>';
+    return;
+  }
+
+  host.innerHTML = mealHistory.map(week => {
+    const weekMeals = Array.isArray(week.meals) ? week.meals : [];
+    const label = week.label || [week.weekStart, week.weekEnd].filter(Boolean).join(' – ') || 'Archived week';
+
+    return `<details class="history-week">
+      <summary>
+        <span>${label}</span>
+        <span class="small">${weekMeals.length} meal${weekMeals.length===1?'':'s'}</span>
+      </summary>
+      <div class="history-grid">
+        ${weekMeals.map(m => {
+          const recipe = m.recipe || {};
+          const ingredients = Array.isArray(m.ingredients) ? m.ingredients : [];
+          const steps = Array.isArray(recipe.steps) ? recipe.steps : [];
+          const timing = [
+            Number.isFinite(Number(recipe.prepMinutes)) ? `Prep ${Number(recipe.prepMinutes)} min` : null,
+            Number.isFinite(Number(recipe.cookMinutes)) ? `Cook ${Number(recipe.cookMinutes)} min` : null
+          ].filter(Boolean).join(' · ');
+          const protein = Number.isFinite(Number(m.proteinPerServing))
+            ? ` · ~${Number(m.proteinPerServing)} g protein/person`
+            : '';
+
+          return `<div class="history-meal">
+            <h3>${m.name || 'Unnamed meal'}</h3>
+            <div class="small">${m.cuisine || 'Cuisine not specified'} · ${Number(m.servings) || 4} portions${protein}</div>
+            ${m.newMeal ? '<div class="tags"><span class="tag new">NEW</span></div>' : ''}
+            <details>
+              <summary>View recipe</summary>
+              <div class="recipeBody">
+                ${timing ? `<div class="small">${timing}</div>` : ''}
+                <h4>Ingredients</h4>
+                ${ingredients.length
+                  ? `<ul>${ingredients.map(ing=>`<li>${ing.quantity} ${ing.unit || ''} ${ing.item}</li>`).join('')}</ul>`
+                  : '<div class="small">No ingredient data.</div>'}
+                <h4>Method</h4>
+                ${steps.length
+                  ? `<ol>${steps.map(s=>`<li>${s}</li>`).join('')}</ol>`
+                  : '<div class="small">No recipe steps.</div>'}
+              </div>
+            </details>
+          </div>`;
+        }).join('')}
+      </div>
+    </details>`;
+  }).join('');
+}
+
 function renderAll(){
   normalizeStateToCurrentMeals();
   renderMeals();
@@ -452,6 +521,7 @@ function renderAll(){
   renderByMeal();
   renderByStore();
   renderRecipes();
+  renderHistory();
 }
 
 $('#finalizeBtn').addEventListener('click', () => {
