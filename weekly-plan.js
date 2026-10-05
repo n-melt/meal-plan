@@ -1,261 +1,284 @@
+window.WEEKLY_PLAN_META = {
+  id: "12/10/2026",
+  weekStart: "12/10/2026",
+  weekEnd: "18/10/2026",
+  label: "12/10/2026–18/10/2026"
+};
+
 window.WEEKLY_MEALS = [
   {
-    id: "chicken-shawarma-bowls",
-    name: "Chicken Shawarma Bowls",
-    cuisine: "Middle Eastern-inspired",
+    id: "chicken-saag",
+    name: "Chicken Saag",
+    cuisine: "Indian",
     newMeal: false,
     servings: 4,
-    proteinPerServing: 65,
+    proteinPerServing: 72,
     estimatedCost: null,
     ingredients: [
-      { item: "chicken thighs", quantity: 2, unit: "lb", store: "ALDI" },
-      { item: "sweet potatoes", quantity: 3, unit: "medium", store: "ALDI" },
+      { item: "chicken breast", quantity: 2.5, unit: "lb", store: "ALDI" },
+      { item: "frozen spinach", quantity: 2, unit: "bags", store: "ALDI" },
       { item: "plain Greek yogurt", quantity: 1, unit: "container", store: "Kroger" },
-      { item: "lemon", quantity: 1, unit: "whole", store: "Kroger" },
-      { item: "garlic", quantity: 4, unit: "cloves", store: "Kroger" }
-    ],
-    recipe: {
-      prepMinutes: 15,
-      cookMinutes: 35,
-      steps: [
-        "Season and roast the chicken until cooked through.",
-        "Roast sweet potatoes until browned and tender.",
-        "Mix yogurt, lemon, and garlic into a quick sauce.",
-        "Serve chicken and potatoes with the sauce."
-      ]
-    }
-  },
-  {
-    id: "thai-basil-chicken",
-    name: "Thai Basil Chicken",
-    cuisine: "Thai-inspired",
-    newMeal: false,
-    servings: 4,
-    proteinPerServing: 60,
-    estimatedCost: null,
-    ingredients: [
-      { item: "ground chicken", quantity: 2, unit: "lb", store: "ALDI" },
-      { item: "jasmine rice", quantity: 2, unit: "cups dry", store: "Trader Joe's" },
-      { item: "basil", quantity: 1, unit: "bunch", store: "Kroger" },
-      { item: "bell peppers", quantity: 2, unit: "whole", store: "ALDI" },
-      { item: "soy sauce", quantity: 0.25, unit: "cup", store: "Kroger" }
-    ],
-    recipe: {
-      prepMinutes: 10,
-      cookMinutes: 20,
-      steps: [
-        "Cook rice.",
-        "Brown the chicken in a skillet.",
-        "Add peppers and soy sauce, then cook until tender-crisp.",
-        "Stir in basil just before serving over rice."
-      ]
-    }
-  },
-  {
-    id: "turkey-chili",
-    name: "Turkey Chili",
-    cuisine: "American",
-    newMeal: false,
-    servings: 4,
-    proteinPerServing: 55,
-    estimatedCost: null,
-    ingredients: [
-      { item: "ground turkey", quantity: 2, unit: "lb", store: "ALDI" },
-      { item: "kidney beans", quantity: 2, unit: "cans", store: "Kroger" },
-      { item: "crushed tomatoes", quantity: 1, unit: "large can", store: "Kroger" },
       { item: "onion", quantity: 1, unit: "whole", store: "ALDI" },
-      { item: "chili powder", quantity: 2, unit: "tbsp", store: "Kroger" }
-    ],
-    recipe: {
-      prepMinutes: 10,
-      cookMinutes: 35,
-      steps: [
-        "Brown the turkey with chopped onion.",
-        "Add beans, tomatoes, and chili powder.",
-        "Simmer until thickened and flavors combine."
-      ]
-    }
-  },
-  {
-    id: "chicken-tikka-masala",
-    name: "Chicken Tikka Masala",
-    cuisine: "Indian-inspired",
-    newMeal: false,
-    servings: 4,
-    proteinPerServing: 68,
-    estimatedCost: null,
-    ingredients: [
-      { item: "chicken breast", quantity: 2, unit: "lb", store: "ALDI" },
-      { item: "plain Greek yogurt", quantity: 1, unit: "container", store: "Kroger" },
-      { item: "tomato sauce", quantity: 1, unit: "can", store: "Kroger" },
       { item: "garam masala", quantity: 2, unit: "tbsp", store: "Kroger" },
       { item: "basmati rice", quantity: 2, unit: "cups dry", store: "Trader Joe's" }
     ],
     recipe: {
-      prepMinutes: 20,
-      cookMinutes: 30,
-      steps: [
-        "Coat chicken with yogurt and spices.",
-        "Cook chicken until browned and nearly done.",
-        "Simmer with tomato sauce and additional spices.",
-        "Serve with basmati rice."
-      ]
-    }
-  },
-  {
-    id: "beef-stir-fry",
-    name: "Beef Stir Fry",
-    cuisine: "East Asian-inspired",
-    newMeal: false,
-    servings: 4,
-    proteinPerServing: 58,
-    estimatedCost: null,
-    ingredients: [
-      { item: "beef strips", quantity: 2, unit: "lb", store: "Kroger" },
-      { item: "broccoli", quantity: 2, unit: "heads", store: "ALDI" },
-      { item: "bell peppers", quantity: 2, unit: "whole", store: "ALDI" },
-      { item: "soy sauce", quantity: 0.25, unit: "cup", store: "Kroger" },
-      { item: "rice", quantity: 2, unit: "cups dry", store: "Trader Joe's" }
-    ],
-    recipe: {
-      prepMinutes: 15,
-      cookMinutes: 20,
-      steps: [
-        "Cook rice.",
-        "Sear beef quickly over high heat.",
-        "Stir-fry vegetables until crisp-tender.",
-        "Return beef to the pan with soy sauce and serve over rice."
-      ]
-    }
-  },
-  {
-    id: "pasta-primavera-chicken",
-    name: "Chicken Pasta Primavera",
-    cuisine: "Italian-American",
-    newMeal: false,
-    servings: 4,
-    proteinPerServing: 62,
-    estimatedCost: null,
-    ingredients: [
-      { item: "chicken breast", quantity: 2, unit: "lb", store: "ALDI" },
-      { item: "pasta", quantity: 1, unit: "lb", store: "Kroger" },
-      { item: "zucchini", quantity: 2, unit: "whole", store: "ALDI" },
-      { item: "cherry tomatoes", quantity: 1, unit: "pint", store: "Trader Joe's" },
-      { item: "parmesan", quantity: 1, unit: "container", store: "Trader Joe's" }
-    ],
-    recipe: {
-      prepMinutes: 15,
-      cookMinutes: 25,
-      steps: [
-        "Cook pasta until al dente.",
-        "Cook chicken and sliced vegetables in a large skillet.",
-        "Toss with pasta, tomatoes, and parmesan.",
-        "Season and serve."
-      ]
-    }
-  },
-  {
-    id: "black-bean-enchiladas",
-    name: "Black Bean Enchiladas",
-    cuisine: "Mexican-inspired",
-    newMeal: false,
-    servings: 4,
-    proteinPerServing: 32,
-    estimatedCost: null,
-    ingredients: [
-      { item: "black beans", quantity: 3, unit: "cans", store: "Kroger" },
-      { item: "corn tortillas", quantity: 12, unit: "count", store: "Kroger" },
-      { item: "enchilada sauce", quantity: 1, unit: "can", store: "Kroger" },
-      { item: "shredded cheese", quantity: 2, unit: "cups", store: "ALDI" },
-      { item: "onion", quantity: 1, unit: "whole", store: "ALDI" }
-    ],
-    recipe: {
-      prepMinutes: 20,
-      cookMinutes: 30,
-      steps: [
-        "Mix beans, onion, and part of the cheese.",
-        "Fill and roll tortillas into a baking dish.",
-        "Cover with enchilada sauce and remaining cheese.",
-        "Bake until hot and bubbling."
-      ]
-    }
-  },
-  {
-    id: "lemon-chicken-orzo-soup",
-    name: "Lemon Chicken Orzo Soup",
-    cuisine: "Mediterranean-inspired",
-    newMeal: false,
-    servings: 4,
-    proteinPerServing: 48,
-    estimatedCost: null,
-    ingredients: [
-      { item: "chicken breast", quantity: 1.5, unit: "lb", store: "ALDI" },
-      { item: "orzo", quantity: 1, unit: "cup dry", store: "Kroger" },
-      { item: "carrots", quantity: 4, unit: "whole", store: "ALDI" },
-      { item: "celery", quantity: 4, unit: "stalks", store: "ALDI" },
-      { item: "lemon", quantity: 2, unit: "whole", store: "Kroger" }
-    ],
-    recipe: {
       prepMinutes: 15,
       cookMinutes: 35,
       steps: [
-        "Cook chopped vegetables until softened.",
-        "Add broth, chicken, and orzo and simmer until cooked.",
-        "Shred the chicken and return it to the pot.",
-        "Finish with lemon juice and seasoning."
+        "Cook the basmati rice.",
+        "Brown diced chicken with onion and garam masala.",
+        "Add spinach and a small amount of water; simmer until the chicken is cooked through.",
+        "Stir in yogurt off heat and season to taste.",
+        "Serve over rice."
       ]
     }
   },
   {
-    id: "filipino-chicken-adobo",
-    name: "Filipino Chicken Adobo",
-    cuisine: "Filipino",
-    newMeal: true,
+    id: "turkey-bolognese",
+    name: "Turkey Bolognese",
+    cuisine: "Italian",
+    newMeal: false,
     servings: 4,
-    proteinPerServing: 70,
+    proteinPerServing: 64,
     estimatedCost: null,
     ingredients: [
-      { item: "chicken thighs", quantity: 2.5, unit: "lb", store: "ALDI" },
-      { item: "soy sauce", quantity: 0.5, unit: "cup", store: "Kroger" },
-      { item: "vinegar", quantity: 0.5, unit: "cup", store: "Kroger" },
-      { item: "garlic", quantity: 8, unit: "cloves", store: "Kroger" },
-      { item: "bay leaves", quantity: 3, unit: "leaves", store: "Kroger" },
-      { item: "rice", quantity: 2, unit: "cups dry", store: "Trader Joe's" }
-    ],
-    recipe: {
-      prepMinutes: 10,
-      cookMinutes: 45,
-      steps: [
-        "Brown the chicken lightly.",
-        "Add soy sauce, vinegar, garlic, bay leaves, and a small amount of water.",
-        "Simmer until the chicken is tender and the sauce reduces.",
-        "Serve with rice."
-      ]
-    }
-  },
-  {
-    id: "georgian-shkmeruli",
-    name: "Georgian Shkmeruli",
-    cuisine: "Georgian",
-    newMeal: true,
-    servings: 4,
-    proteinPerServing: 66,
-    estimatedCost: null,
-    ingredients: [
-      { item: "chicken thighs", quantity: 2.5, unit: "lb", store: "ALDI" },
-      { item: "garlic", quantity: 10, unit: "cloves", store: "Kroger" },
-      { item: "whole milk", quantity: 2, unit: "cups", store: "ALDI" },
-      { item: "butter", quantity: 3, unit: "tbsp", store: "ALDI" },
-      { item: "potatoes", quantity: 2, unit: "lb", store: "ALDI" }
+      { item: "ground turkey", quantity: 2.5, unit: "lb", store: "ALDI" },
+      { item: "pasta", quantity: 1, unit: "lb", store: "Kroger" },
+      { item: "crushed tomatoes", quantity: 2, unit: "cans", store: "Kroger" },
+      { item: "onion", quantity: 1, unit: "whole", store: "ALDI" },
+      { item: "carrots", quantity: 2, unit: "whole", store: "ALDI" },
+      { item: "parmesan", quantity: 1, unit: "container", store: "Trader Joe's" }
     ],
     recipe: {
       prepMinutes: 15,
       cookMinutes: 40,
       steps: [
-        "Roast or pan-sear the chicken until browned and cooked through.",
-        "Gently cook a generous amount of garlic in butter.",
-        "Add milk and simmer briefly to form a garlicky sauce.",
-        "Return chicken to the sauce and serve with potatoes."
+        "Cook pasta until al dente.",
+        "Brown turkey with finely chopped onion and carrots.",
+        "Add crushed tomatoes and simmer until thickened.",
+        "Toss with pasta and finish with parmesan."
+      ]
+    }
+  },
+  {
+    id: "chicken-tortilla-soup",
+    name: "Chicken Tortilla Soup",
+    cuisine: "Mexican",
+    newMeal: false,
+    servings: 4,
+    proteinPerServing: 58,
+    estimatedCost: null,
+    ingredients: [
+      { item: "chicken breast", quantity: 2, unit: "lb", store: "ALDI" },
+      { item: "black beans", quantity: 2, unit: "cans", store: "Kroger" },
+      { item: "corn", quantity: 1, unit: "bag", store: "ALDI" },
+      { item: "diced tomatoes", quantity: 1, unit: "large can", store: "Kroger" },
+      { item: "corn tortillas", quantity: 8, unit: "count", store: "Kroger" },
+      { item: "lime", quantity: 2, unit: "whole", store: "Kroger" }
+    ],
+    recipe: {
+      prepMinutes: 15,
+      cookMinutes: 35,
+      steps: [
+        "Simmer chicken with tomatoes and enough broth to make a soup base.",
+        "Shred the chicken and return it to the pot.",
+        "Add black beans and corn and simmer until hot.",
+        "Slice tortillas into strips and toast until crisp.",
+        "Serve with tortilla strips and lime."
+      ]
+    }
+  },
+  {
+    id: "thai-red-curry-chicken",
+    name: "Thai Red Curry Chicken",
+    cuisine: "Thai",
+    newMeal: false,
+    servings: 4,
+    proteinPerServing: 66,
+    estimatedCost: null,
+    ingredients: [
+      { item: "chicken thighs", quantity: 2.5, unit: "lb", store: "ALDI" },
+      { item: "coconut milk", quantity: 2, unit: "cans", store: "Trader Joe's" },
+      { item: "red curry paste", quantity: 1, unit: "jar", store: "Kroger" },
+      { item: "bell peppers", quantity: 2, unit: "whole", store: "ALDI" },
+      { item: "green beans", quantity: 1, unit: "lb", store: "ALDI" },
+      { item: "jasmine rice", quantity: 2, unit: "cups dry", store: "Trader Joe's" }
+    ],
+    recipe: {
+      prepMinutes: 15,
+      cookMinutes: 30,
+      steps: [
+        "Cook jasmine rice.",
+        "Brown sliced chicken thighs.",
+        "Add curry paste and cook briefly until fragrant.",
+        "Add coconut milk, peppers, and green beans; simmer until the chicken is cooked through.",
+        "Serve over rice."
+      ]
+    }
+  },
+  {
+    id: "beef-barley-soup",
+    name: "Beef and Barley Soup",
+    cuisine: "American",
+    newMeal: false,
+    servings: 4,
+    proteinPerServing: 54,
+    estimatedCost: null,
+    ingredients: [
+      { item: "beef stew meat", quantity: 2, unit: "lb", store: "Kroger" },
+      { item: "pearled barley", quantity: 1.5, unit: "cups dry", store: "Kroger" },
+      { item: "carrots", quantity: 4, unit: "whole", store: "ALDI" },
+      { item: "celery", quantity: 4, unit: "stalks", store: "ALDI" },
+      { item: "onion", quantity: 1, unit: "whole", store: "ALDI" },
+      { item: "beef broth", quantity: 2, unit: "cartons", store: "Kroger" }
+    ],
+    recipe: {
+      prepMinutes: 20,
+      cookMinutes: 60,
+      steps: [
+        "Brown the beef in a large pot.",
+        "Add chopped onion, carrots, and celery and cook briefly.",
+        "Add barley and broth.",
+        "Simmer until the beef and barley are tender.",
+        "Season and serve."
+      ]
+    }
+  },
+  {
+    id: "chicken-piccata-potatoes",
+    name: "Chicken Piccata with Roasted Potatoes",
+    cuisine: "Italian-American",
+    newMeal: false,
+    servings: 4,
+    proteinPerServing: 70,
+    estimatedCost: null,
+    ingredients: [
+      { item: "chicken breast", quantity: 2.5, unit: "lb", store: "ALDI" },
+      { item: "potatoes", quantity: 2.5, unit: "lb", store: "ALDI" },
+      { item: "lemons", quantity: 2, unit: "whole", store: "Kroger" },
+      { item: "capers", quantity: 1, unit: "jar", store: "Kroger" },
+      { item: "butter", quantity: 4, unit: "tbsp", store: "ALDI" },
+      { item: "flour", quantity: 0.5, unit: "cup", store: "Kroger" }
+    ],
+    recipe: {
+      prepMinutes: 20,
+      cookMinutes: 35,
+      steps: [
+        "Roast chopped potatoes at 425°F until browned and tender.",
+        "Slice chicken into thin cutlets and lightly coat with flour.",
+        "Pan-sear chicken until cooked through.",
+        "Make a quick pan sauce with lemon, capers, butter, and a splash of water.",
+        "Serve chicken with sauce and roasted potatoes."
+      ]
+    }
+  },
+  {
+    id: "smoky-chicken-black-bean-bowls",
+    name: "Smoky Chicken and Black Bean Bowls",
+    cuisine: "Mexican-inspired",
+    newMeal: false,
+    servings: 4,
+    proteinPerServing: 68,
+    estimatedCost: null,
+    ingredients: [
+      { item: "chicken breast", quantity: 2.25, unit: "lb", store: "ALDI" },
+      { item: "black beans", quantity: 2, unit: "cans", store: "Kroger" },
+      { item: "brown rice", quantity: 2, unit: "cups dry", store: "Kroger" },
+      { item: "frozen corn", quantity: 1, unit: "bag", store: "ALDI" },
+      { item: "salsa", quantity: 1, unit: "jar", store: "Kroger" },
+      { item: "avocado", quantity: 2, unit: "whole", store: "ALDI" }
+    ],
+    recipe: {
+      prepMinutes: 15,
+      cookMinutes: 30,
+      steps: [
+        "Cook brown rice.",
+        "Season and cook chicken until browned and cooked through.",
+        "Warm black beans and corn.",
+        "Slice chicken and assemble bowls with rice, beans, corn, salsa, and avocado."
+      ]
+    }
+  },
+  {
+    id: "japanese-oyakodon",
+    name: "Oyakodon",
+    cuisine: "Japanese",
+    newMeal: true,
+    servings: 4,
+    proteinPerServing: 56,
+    estimatedCost: null,
+    ingredients: [
+      { item: "chicken thighs", quantity: 2, unit: "lb", store: "ALDI" },
+      { item: "eggs", quantity: 8, unit: "count", store: "ALDI" },
+      { item: "yellow onion", quantity: 2, unit: "whole", store: "ALDI" },
+      { item: "soy sauce", quantity: 0.25, unit: "cup", store: "Kroger" },
+      { item: "short-grain rice", quantity: 2, unit: "cups dry", store: "Trader Joe's" },
+      { item: "green onions", quantity: 1, unit: "bunch", store: "Kroger" }
+    ],
+    recipe: {
+      prepMinutes: 15,
+      cookMinutes: 25,
+      steps: [
+        "Cook the rice.",
+        "Simmer sliced onion and chicken in a lightly seasoned soy-based broth until the chicken is cooked.",
+        "Pour beaten eggs over the chicken and cover until softly set.",
+        "Spoon the mixture over rice and garnish with green onions."
+      ]
+    }
+  },
+  {
+    id: "ethiopian-doro-wat-inspired",
+    name: "Doro Wat-Inspired Chicken Stew",
+    cuisine: "Ethiopian-inspired",
+    newMeal: true,
+    servings: 4,
+    proteinPerServing: 62,
+    estimatedCost: null,
+    ingredients: [
+      { item: "chicken thighs", quantity: 2.5, unit: "lb", store: "ALDI" },
+      { item: "yellow onions", quantity: 3, unit: "whole", store: "ALDI" },
+      { item: "berbere seasoning", quantity: 3, unit: "tbsp", store: "Kroger" },
+      { item: "tomato paste", quantity: 1, unit: "can", store: "Kroger" },
+      { item: "eggs", quantity: 4, unit: "count", store: "ALDI" },
+      { item: "rice", quantity: 2, unit: "cups dry", store: "Trader Joe's" }
+    ],
+    recipe: {
+      prepMinutes: 20,
+      cookMinutes: 55,
+      steps: [
+        "Slowly cook sliced onions until very soft and browned.",
+        "Add berbere and tomato paste and cook until fragrant.",
+        "Add chicken and enough water to braise; simmer until tender.",
+        "Hard-boil the eggs, peel them, and add them to the stew near the end.",
+        "Serve with rice."
+      ]
+    }
+  },
+  {
+    id: "turkey-white-bean-skillet",
+    name: "Turkey, White Bean, and Tomato Skillet",
+    cuisine: "American",
+    newMeal: false,
+    servings: 4,
+    proteinPerServing: 63,
+    estimatedCost: null,
+    ingredients: [
+      { item: "ground turkey", quantity: 2.25, unit: "lb", store: "ALDI" },
+      { item: "white beans", quantity: 2, unit: "cans", store: "Kroger" },
+      { item: "diced tomatoes", quantity: 1, unit: "large can", store: "Kroger" },
+      { item: "spinach", quantity: 1, unit: "bag", store: "ALDI" },
+      { item: "onion", quantity: 1, unit: "whole", store: "ALDI" },
+      { item: "whole grain bread", quantity: 1, unit: "loaf", store: "Kroger" }
+    ],
+    recipe: {
+      prepMinutes: 10,
+      cookMinutes: 25,
+      steps: [
+        "Brown turkey with chopped onion.",
+        "Add tomatoes and white beans and simmer until slightly thickened.",
+        "Fold in spinach until wilted.",
+        "Serve with toasted whole grain bread."
       ]
     }
   }
