@@ -1,3 +1,7 @@
+// estimatedCost values updated 05/10/2026 from current retailer website pricing.
+// Values are approximate per-recipe ingredient-use estimates, not consolidated checkout totals.
+// Shared ingredients, package sizes, branch-specific pricing, taxes, and promotions can change actual spend.
+
 window.WEEKLY_PLAN_META = {
   id: "12/10/2026",
   weekStart: "12/10/2026",
@@ -13,7 +17,7 @@ window.WEEKLY_MEALS = [
     newMeal: false,
     servings: 4,
     proteinPerServing: 72,
-    estimatedCost: null,
+    estimatedCost: 16.20,
     ingredients: [
       { item: "chicken breast", quantity: 2.5, unit: "lb", store: "ALDI" },
       { item: "frozen spinach", quantity: 2, unit: "bags", store: "ALDI" },
@@ -41,7 +45,7 @@ window.WEEKLY_MEALS = [
     newMeal: false,
     servings: 4,
     proteinPerServing: 64,
-    estimatedCost: null,
+    estimatedCost: 16.44,
     ingredients: [
       { item: "ground turkey", quantity: 2.5, unit: "lb", store: "ALDI" },
       { item: "pasta", quantity: 1, unit: "lb", store: "Kroger" },
@@ -68,7 +72,7 @@ window.WEEKLY_MEALS = [
     newMeal: false,
     servings: 4,
     proteinPerServing: 58,
-    estimatedCost: null,
+    estimatedCost: 10.87,
     ingredients: [
       { item: "chicken breast", quantity: 2, unit: "lb", store: "ALDI" },
       { item: "black beans", quantity: 2, unit: "cans", store: "Kroger" },
@@ -96,7 +100,7 @@ window.WEEKLY_MEALS = [
     newMeal: false,
     servings: 4,
     proteinPerServing: 66,
-    estimatedCost: null,
+    estimatedCost: 19.42,
     ingredients: [
       { item: "chicken thighs", quantity: 2.5, unit: "lb", store: "ALDI" },
       { item: "coconut milk", quantity: 2, unit: "cans", store: "Trader Joe's" },
@@ -124,7 +128,7 @@ window.WEEKLY_MEALS = [
     newMeal: false,
     servings: 4,
     proteinPerServing: 54,
-    estimatedCost: null,
+    estimatedCost: 25.10,
     ingredients: [
       { item: "beef stew meat", quantity: 2, unit: "lb", store: "Kroger" },
       { item: "pearled barley", quantity: 1.5, unit: "cups dry", store: "Kroger" },
@@ -152,7 +156,7 @@ window.WEEKLY_MEALS = [
     newMeal: false,
     servings: 4,
     proteinPerServing: 70,
-    estimatedCost: null,
+    estimatedCost: 11.37,
     ingredients: [
       { item: "chicken breast", quantity: 2.5, unit: "lb", store: "ALDI" },
       { item: "potatoes", quantity: 2.5, unit: "lb", store: "ALDI" },
@@ -180,7 +184,7 @@ window.WEEKLY_MEALS = [
     newMeal: false,
     servings: 4,
     proteinPerServing: 68,
-    estimatedCost: null,
+    estimatedCost: 11.72,
     ingredients: [
       { item: "chicken breast", quantity: 2.25, unit: "lb", store: "ALDI" },
       { item: "black beans", quantity: 2, unit: "cans", store: "Kroger" },
@@ -207,7 +211,7 @@ window.WEEKLY_MEALS = [
     newMeal: true,
     servings: 4,
     proteinPerServing: 56,
-    estimatedCost: null,
+    estimatedCost: 10.72,
     ingredients: [
       { item: "chicken thighs", quantity: 2, unit: "lb", store: "ALDI" },
       { item: "eggs", quantity: 8, unit: "count", store: "ALDI" },
@@ -234,7 +238,7 @@ window.WEEKLY_MEALS = [
     newMeal: true,
     servings: 4,
     proteinPerServing: 62,
-    estimatedCost: null,
+    estimatedCost: 13.12,
     ingredients: [
       { item: "chicken thighs", quantity: 2.5, unit: "lb", store: "ALDI" },
       { item: "yellow onions", quantity: 3, unit: "whole", store: "ALDI" },
@@ -262,7 +266,7 @@ window.WEEKLY_MEALS = [
     newMeal: false,
     servings: 4,
     proteinPerServing: 63,
-    estimatedCost: null,
+    estimatedCost: 17.12,
     ingredients: [
       { item: "ground turkey", quantity: 2.25, unit: "lb", store: "ALDI" },
       { item: "white beans", quantity: 2, unit: "cans", store: "Kroger" },
