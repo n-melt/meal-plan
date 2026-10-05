@@ -140,7 +140,7 @@
 <script src="meal-history.js"></script>
 
 <script>
-const WEEKLY_BUDGET = 100;
+const WEEKLY_BUDGET = 70;
 let meals = Array.isArray(window.WEEKLY_MEALS) ? window.WEEKLY_MEALS : [];
 const mealHistory = Array.isArray(window.MEAL_HISTORY) ? window.MEAL_HISTORY : [];
 
@@ -441,7 +441,7 @@ function renderSummary(){
   }
 
   $('#basketTotal').textContent = allSelectedCostsKnown ? money(total) : `${money(total)} + unknowns`;
-  $('#budgetFill').style.width = Math.min(100,total/WEEKLY_BUDGET*100) + '%';
+  $('#budgetFill').style.width = Math.min(70,total/WEEKLY_BUDGET*100) + '%';
 
   if(!allSelectedCostsKnown){
     $('#budgetVariance').textContent = 'Incomplete cost estimate';
