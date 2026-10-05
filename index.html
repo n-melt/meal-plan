@@ -441,7 +441,7 @@ function renderSummary(){
   }
 
   $('#basketTotal').textContent = allSelectedCostsKnown ? money(total) : `${money(total)} + unknowns`;
-  $('#budgetFill').style.width = Math.min(70,total/WEEKLY_BUDGET*100) + '%';
+  $('#budgetFill').style.width = Math.min(100,total/WEEKLY_BUDGET*100) + '%';
 
   if(!allSelectedCostsKnown){
     $('#budgetVariance').textContent = 'Incomplete cost estimate';

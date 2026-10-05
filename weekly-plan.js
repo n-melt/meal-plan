@@ -1,12 +1,12 @@
-// estimatedCost values updated 05/10/2026 from current retailer website pricing.
+// estimatedCost values updated 10/05/2026 from current retailer website pricing.
 // Values are approximate per-recipe ingredient-use estimates, not consolidated checkout totals.
 // Shared ingredients, package sizes, branch-specific pricing, taxes, and promotions can change actual spend.
 
 window.WEEKLY_PLAN_META = {
-  id: "12/10/2026",
-  weekStart: "12/10/2026",
-  weekEnd: "18/10/2026",
-  label: "12/10/2026–18/10/2026"
+  id: "10/12/2026",
+  weekStart: "10/12/2026",
+  weekEnd: "10/18/2026",
+  label: "10/12/2026–10/18/2026"
 };
 
 window.WEEKLY_MEALS = [
