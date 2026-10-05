@@ -101,10 +101,8 @@
     <div class="metric"><span>Selected meals</span><b id="selectedCount">0</b></div>
     <div class="metric"><span>Candidate meals</span><b id="candidateCount">0</b></div>
     <div class="metric"><span>Estimated selected basket</span><b id="basketTotal">—</b><div class="budgetbar"><div id="budgetFill"></div></div></div>
-    <div class="metric"><span>Weekly target</span><b>$100</b><span id="budgetVariance">No weekly data loaded</span></div>
+    <div class="metric"><span>Weekly target</span><b>$70</b><span id="budgetVariance">No weekly data loaded</span></div>
   </div>
-
-  <div class="notice"><b>Weekly data source:</b> this page reads <code>weekly-plan.js</code>. Prices remain unknown unless <code>estimatedCost</code> is populated.</div>
 
   <nav id="tabs">
     <button data-tab="choose" class="active">1 · Choose meals</button>
@@ -143,7 +141,7 @@
 
 <script>
 const WEEKLY_BUDGET = 100;
-let meals = Array.isArray(window.WEEKLY_MEALS) ? window.WEEKLY_MEALS : [];
+let meals = Array.isArray(window.weekly-plan) ? window.weekly-plan : [];
 const mealHistory = Array.isArray(window.MEAL_HISTORY) ? window.MEAL_HISTORY : [];
 
 let state;
@@ -197,7 +195,7 @@ function renderMeals(){
   grid.innerHTML = '';
 
   if(!meals.length){
-    grid.innerHTML = '<div class="empty" style="grid-column:1/-1">No weekly meal options are loaded. Check that weekly-plan.js is present in the repository root and defines window.WEEKLY_MEALS.</div>';
+    grid.innerHTML = '<div class="empty" style="grid-column:1/-1">No weekly meal options are loaded. Check that weekly-plan.js is present in the repository root and defines window.weekly-plan.</div>';
     $('#choosePrompt').textContent = 'No weekly meal options loaded';
     $('#finalizeBtn').disabled = true;
     $('#finalizeBtn').textContent = 'Finalize selections';
