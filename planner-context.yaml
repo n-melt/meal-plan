@@ -1,0 +1,125 @@
+# Consolidated operating specification; does not itself implement, send, or schedule anything.
+household:
+  size: 2
+  area: "37205, Nashville, Tennessee"
+  restrictions: No known allergies or dietary restrictions.
+  cuisines: [Indian, Italian, soup, American, Thai, Mexican]
+  protein_preference: Favor economical whole or ground chicken breast; substitute when materially improving budget or variety.
+  weekly_budget_usd: 70
+  weekly_candidates: 10
+  cooked_meals: "5-6 weekly; at least 4 full adult portions each: 2 dinner + 2 next-day leftovers (20-24 portions)."
+  coverage: Label uncovered dinner days; never count the same leftovers as both lunch and another dinner.
+  protein: Aim for approximately 80 g/person/portion when feasible; calculate each meal's estimate, including leftovers, and disclose every shortfall.
+
+defaults:
+  status: Editable implementation assumptions, not additional confirmed user preferences.
+  timezone: America/Chicago
+  currency: USD
+  shopping_mode: In-store; disclose delivery or third-party markups.
+  budget_scope: Dinners and next-day leftovers, including applicable tax; exclude breakfast, snacks, beverages, and household supplies.
+  pantry: Subtract only confirmed on-hand quantities; include all newly needed oil, spices, and condiments.
+  conflicts: Attempt budget and protein goals together; quantify infeasibility and tradeoffs without silently reducing portions or raising budget.
+
+stores:
+  - label: "ALDI, Charlotte Pike"
+    branch: "Unconfirmed candidate: 405 American Rd, Nashville, TN 37209; confirm mapping before using local prices."
+    locator: https://info.aldi.us/stores/l/tn/nashville
+    ad: https://www.aldi.us/store/aldi/flyers/view/weekly/print
+  - label: "Kroger, Charlotte Pike"
+    branch: "5705 Charlotte Pike, Nashville, TN 37209; store 026/00547"
+    locator: https://www.kroger.com/stores/grocery/tn/nashville/charlotte-pike/026/00547
+    ad: https://www.kroger.com/weeklyad
+  - label: "Trader Joe's, White Bridge Road"
+    branch: "90 White Bridge Rd, Nashville, TN 37205; store 739"
+    locator: https://locations.traderjoes.com/tn/nashville/739/
+    policy: Compare everyday prices; do not treat Fearless Flyer features as discounts without evidence.
+    policy_source: https://www.traderjoes.com/home/FAQ/general-faqs.html
+  # Branch/policy information inherited from checks dated 10/02/26; reverify for each run.
+
+recipe_ideas:
+  sources: ["https://www.halfbakedharvest.com/", "https://www.budgetbytes.com/"]
+  commands:
+    - 'SEARCH "site:halfbakedharvest.com {sale_protein_or_vegetable} {preferred_cuisine} dinner"; OPEN relevant recipe pages.'
+    - 'SEARCH "site:budgetbytes.com {sale_protein_or_vegetable} {preferred_cuisine} meal prep"; OPEN relevant recipe pages.'
+    - BROWSE both sites' recipe search/categories for additional ideas; vary ingredients and cuisines and compare against current/history menus.
+    - GENERATE exactly 10 varied weekly candidates, adapting source recipes to portions, preferences, nutrition, shared ingredients, and usable-basket value; identify a feasible 5-6-meal selection or disclose tradeoffs.
+  command_type: Instructions for the planning agent's web tools, not shell commands or assumed website APIs.
+  attribution: Save recipe title, direct URL, access date, and material adaptations; summarize methods in original concise wording.
+  verification: Read source recipes; never fabricate attribution. Disclose inaccessible sources. Recalculate adapted nutrition and local costs; published recipe prices are not verified Nashville checkout prices.
+
+verification_and_costs:
+  sourcing: Check official ALDI/Kroger ads and all preferred stores' available everyday prices for the intended shopping date; verify exact branch and in-store mode.
+  deals: Record URL, branch, checked date, validity dates, quantity limits, and loyalty/coupon/multi-buy conditions for every quoted deal.
+  eligibility: Unknown until confirmed; exclude conditional savings from base totals and show eligible alternatives separately.
+  value: Compare equivalent units, package sizes, actual packages needed, and waste; use relevant discounts when they improve the usable basket without sacrificing portions or variety.
+  stops: No requirement to visit every store; explain savings from extra stops and provide a simpler alternative when useful.
+  evidence: Distinguish verified local prices, estimates, and unavailable values; never invent prices or savings. Claim savings only with a defensible like-for-like comparison.
+  item_fields: [item, needed_amount, confirmed_pantry_amount, package_size, packages_to_buy, assigned_store, package_price, extended_purchase_cost, source]
+  reporting: Include verification/shopping dates, pretax store/basket subtotals, verified applicable tax estimate, checkout total, variance from $70, explicit overruns, recipe/per-portion allocations, unknowns, assumptions, conditional discounts, and unused purchases carried forward.
+  calculations:
+    - Normalize ingredient identity and compatible units; combine requirements, subtract confirmed stock, then round up to actual packages. Never merge incompatible units without a valid conversion.
+    - Charge each purchase once at packages required times eligible package price; do not use consumed fractions to understate checkout spending.
+    - Allocate recipe costs by consumed quantities; state existing pantry inventory's cost basis without implying a purchase this week.
+    - Keep recipe allocations separate from checkout costs; never add allocations to the basket. Store purchase subtotals must reconcile to the consolidated subtotal.
+    - Verify applicable tax rules each run; do not permanently hardcode rates. Unknown prices are not zero; label incomplete totals incomplete.
+  nutrition: Calculate approximate protein from documented ingredient quantities and reliable nutrition sources/labels; distinguish raw/cooked weights and divide batch protein by full adult portions.
+
+repository_and_site:
+  repository: n-melt/meal-plan
+  branch: Read the repository's actual default branch; do not assume a branch name.
+  context: Read this file and current repository data before each run; use repository state rather than chat history for operational state. Explicit user corrections override older context.
+  files:
+    index.html: Preserve the existing responsive planner, layout, controls, and local-browser behavior except for requested changes.
+    weekly-plan.js: Defines window.WEEKLY_PLAN_META and window.WEEKLY_MEALS; exactly 10 current weekly candidates.
+    meal-history.js: Defines window.MEAL_HISTORY; retain complete archived weekly plans and recipes.
+  compatibility: Preserve exact filenames, root-relative script loading, existing globals, and compatible data structures; do not introduce a backend or cross-device synchronization requirement.
+  meal_fields: [id, name, cuisine, newMeal, servings, proteinPerServing, estimatedCost, ingredients, recipe]
+  ingredient_fields: [item, quantity, unit, store]
+  recipe_fields: [prepMinutes, cookMinutes, steps]
+  week_fields: [id, weekStart, weekEnd, label]
+  history_shape: Each archived week retains its metadata and meals array; preserve existing IDs and distinguish week-specific instances.
+  dates: Display all dates as zero-padded MM/DD/YY, including headings, history, exports, and verification dates; parse legacy formats explicitly without timezone shifts or changing stable IDs merely for display.
+  tabs: ["1 Choose meals", "2 Full list", "3 By meal", "4 By store", "5 Recipes", "6 Past weeks"]
+  selection: Allow 0 through all available meals; 5-6 is the cooking intent, not a selection limit. Finalize hides unselected meals; Change selections restores editing; Reset clears local selections/checklists.
+  state: Persist weekly/archive selections, finalization, and checklists locally in this browser/device; preserve compatible existing state. No cross-device sync; different list-view checkboxes are not inherently synchronized.
+  views: Derive tabs 2-5 from the same selected set and quantities. Tab 2 consolidates purchases; tab 3 shows each meal's full-batch ingredients and bolds EVERY occurrence shared across distinct meals; tab 4 groups consolidated purchases by store/section with subtotals; tab 5 contains selected recipes.
+  rollover: Before replacing weekly-plan.js, archive the outgoing complete 10-candidate plan and metadata once in meal-history.js, including unselected meals; preserve older weeks and avoid duplicate archival on reruns.
+
+archive_selection:
+  control: Give every recipe in each Past weeks dropdown an accessible checkbox, including recipes with unavailable prices.
+  select: Add that archived instance once to the active selected set in tab 1, including an already-finalized set; immediately refresh totals and tabs 2-5 without requiring another finalization.
+  deselect: Remove that archived instance and recompute all affected quantities, costs, and recipes; retain contributions from other selected meals and preserve the archive itself.
+  identity: Use stable week-plus-meal identity to prevent collisions with current meals and other weeks; repeated toggles must not duplicate the same instance. Archive additions do not replace any of the 10 weekly candidates.
+  badge: Display ARCHIVE in a honey-gold pill using the existing .tag/.tag.new NEW badge's typography, spacing, radius, and format; retain original newMeal metadata but show ARCHIVE for active archive selections.
+  badge_colors: {background: "#fff0ce", text: "#7a4e05"}
+  propagation: Include all selected archive ingredients in tabs 2 Full list, 3 By meal, and 4 By store using normal consolidation/shared-ingredient rules; include the complete recipe in tab 5 Recipes.
+  price_lock: At archival, copy the recipe's then-current prospective estimatedCost unchanged into meal-history.js; preserve it thereafter through selection, later price checks, and reruns.
+  display: Show the preserved estimatedCost as a historical recipe ingredient allocation with its source week; include known values in selected recipe-allocation totals.
+  unavailable: If historical estimatedCost is null, missing, or invalid, display "price unavailable"; never reconstruct or backfill it, coerce null to zero, or present an incomplete allocation total as complete.
+  checkout: Historical estimatedCost is not a current quote. Calculate any current consolidated checkout estimate separately from newly verified package prices for all selected ingredients; never overwrite the historical value.
+  persistence: Include selected archive instances in state validation and reload restoration so normalization against weekly candidates cannot discard them.
+
+recipes:
+  completeness: One recipe per candidate/selected meal, at least 4 full adult portions, all batch ingredients/quantities including oil and seasonings, and raw/cooked weights when material.
+  method: Concise executable steps with essential temperatures, timings, prep/cook times, and no omitted ingredients; quantities must match meal and purchasing views.
+  leftovers: Add useful storage/reheating guidance; verify specific food-safety advice before stating it.
+
+exports_and_delivery:
+  overview: Week/shopping dates, selected meals, yields, protein/portion, checkout estimate, $70 variance, and caveats.
+  workbook: Dated .xlsx with exactly 3 tabs named "1 Full list", "2 By meal", "3 By store"; use the same data, derived-cost formulas, bold shared ingredients on every meal-view occurrence, and short recipes at the bottom of By meal.
+  notes: Dated HTML for Apple Notes; one note with three corresponding list sections, headings, bold shared ingredients, and one paragraph per shopping item. Put recipes last, after all lists/source/cost notes.
+  notes_title: "Weekly groceries | {week_start} to {week_end}"
+  notes_folder: Weekly Groceries
+  notes_checklists: Import HTML on Mac via File > Import to Notes; select store-group item paragraphs and use Checklist. HTML boxes are not pre-created native Notes checklists; use By store as the primary checklist and other views as references.
+  notes_sources: ["https://support.apple.com/en-us/102223", "https://support.apple.com/guide/notes/add-lists-apd93c815aa0/mac"]
+  email: Overview/cost breakdown, all three list sections, then recipes last; bold shared meal-view ingredients and attach the dated workbook/HTML.
+  email_subject: "Weekly meals and groceries | {week_start} | estimated checkout ${checkout_total}"
+  incomplete_subject: Use "Draft / pricing incomplete" when costs are incomplete; never portray partial totals as a complete checkout estimate.
+  configuration: Sender, recipients/cc/bcc, weekly delivery day/time, shopping day, first delivery date, service, and review/automatic-send mode remain unset until explicitly configured; timezone America/Chicago.
+  authorization: This specification does not authorize emailing, scheduling, or purchasing. Use only an explicitly configured/authorized service and action; otherwise prepare drafts. Report delivery/scheduling success only after confirmation from the action.
+
+run_checks:
+  - Resolve shopping date, exact stores, pantry quantities, and changed preferences; source ideas/deals, generate 10 candidates, and identify the intended 5-6-meal plan with portions/protein/tradeoffs.
+  - Verify quantities, package-based purchases, current price evidence, tax, allocations, budget variance, and reconciliation; include every required ingredient without duplicate charges.
+  - Preserve outgoing history and locked costs; verify all six site tabs, weekly/archive selection and deselection, finalized additions, reload persistence, badges, dates, null-price handling, and duplicate prevention.
+  - Generate matching dated exports/draft email when delivering a weekly plan; ensure recipes are last in exports and present in site tab 5. Execute only authorized delivery; report unresolved verification gaps.
