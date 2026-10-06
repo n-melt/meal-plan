@@ -1,6 +1,6 @@
 window.MEAL_HISTORY = [
   {
-    id: "2026-09-28",
+    id: "09/28/26",
     weekStart: "09/28/26",
     weekEnd: "10/04/26",
     label: "09/28/26–10/04/26",
