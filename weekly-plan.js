@@ -3,10 +3,10 @@
 // Shared ingredients, package sizes, branch-specific pricing, taxes, and promotions can change actual spend.
 
 window.WEEKLY_PLAN_META = {
-  id: "10/12/2026",
-  weekStart: "10/12/2026",
-  weekEnd: "10/18/2026",
-  label: "10/12/2026–10/18/2026"
+  id: "10/05/2026",
+  weekStart: "10/05/2026",
+  weekEnd: "10/11/2026",
+  label: "10/05/2026–10/11/2026"
 };
 
 window.WEEKLY_MEALS = [
