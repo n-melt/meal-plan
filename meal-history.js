@@ -270,8 +270,8 @@ window.MEAL_HISTORY = [
   {
     id: "10/5/26",
     weekStart: "10/5/26",
-    weekEnd: "10/12/26",
-    label: "10/05/26–10/12/26",
+    weekEnd: "10/11/26",
+    label: "10/05/26–10/11/26",
     meals: [
   {
     id: "chicken-saag",
