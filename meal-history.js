@@ -1,9 +1,9 @@
 window.MEAL_HISTORY = [
   {
-    id: "09/28/26",
-    weekStart: "09/28/26",
-    weekEnd: "10/04/26",
-    label: "09/28/26–10/04/26",
+    id: "09/21/26",
+    weekStart: "09/21/26",
+    weekEnd: "09/27/26",
+    label: "09/21/26–09/27/26",
     meals: [
       {
         id: "moroccan-chicken-tagine",
@@ -268,10 +268,10 @@ window.MEAL_HISTORY = [
     ]
   },
   {
-    id: "10/5/26",
-    weekStart: "10/5/26",
-    weekEnd: "10/11/26",
-    label: "10/05/26–10/11/26",
+    id: "09/28/26",
+    weekStart: "09/28/26",
+    weekEnd: "10/04/26",
+    label: "09/28/26–10/04/26",
     meals: [
   {
     id: "chicken-saag",
