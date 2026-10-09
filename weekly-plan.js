@@ -5,8 +5,8 @@
 window.WEEKLY_PLAN_META = {
   id: "10/12/2026",
   weekStart: "10/12/2026",
-  weekEnd: "10/17/2026",
-  label: "10/12/2026–10/17/2026"
+  weekEnd: "10/18/2026",
+  label: "10/12/2026–10/18/2026"
 };
 
 window.WEEKLY_MEALS = [
