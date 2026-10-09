@@ -1,71 +1,71 @@
-// User-authorized planning estimates; historical prices are preserved.
+// Weekly meal candidates for 10/19/26–10/25/26. Shopping costs are estimates, not guaranteed checkout quotes.
 window.WEEKLY_PLAN_META = {
-  "id": "10/12/26",
-  "weekStart": "10/12/26",
-  "weekEnd": "10/18/26",
-  "label": "10/12/26–10/18/26",
+  "id": "10/19/26",
+  "weekStart": "10/19/26",
+  "weekEnd": "10/25/26",
+  "label": "10/19/26–10/25/26",
   "planning": {
     "checkedDate": "10/09/26",
-    "shoppingDate": "10/12/26",
+    "shoppingDate": "10/19/26",
     "shoppingDateStatus": "Assumed Monday; not user-confirmed",
-    "status": "User-authorized budget estimates; no guaranteed checkout quote",
+    "status": "Complete estimated package basket; expected checkout estimate is under the $70 cap, but this is not a guaranteed checkout quote and several non-meat package prices are estimates.",
     "recommendedMealIds": [
-      "chicken-fajita-rice-skillet",
-      "lemon-chicken-noodle-soup",
-      "creamy-tomato-chicken-pasta",
+      "broccoli-cheddar-chicken-rice",
       "red-lentil-coconut-curry",
-      "broccoli-cheddar-chicken-rice"
+      "chicken-tortilla-soup",
+      "greek-lemon-oregano-chicken-chickpea-bowls",
+      "mexican-chicken-black-bean-rice-skillet"
     ],
     "schedule": [
       {
-        "date": "10/12/26",
-        "mealId": "chicken-fajita-rice-skillet",
+        "date": "10/19/26",
+        "mealId": "broccoli-cheddar-chicken-rice",
         "dinnerPortions": 2,
         "nextDayLunchPortions": 2
       },
       {
-        "date": "10/13/26",
-        "mealId": "lemon-chicken-noodle-soup",
-        "dinnerPortions": 2,
-        "nextDayLunchPortions": 2
-      },
-      {
-        "date": "10/14/26",
-        "mealId": "creamy-tomato-chicken-pasta",
-        "dinnerPortions": 2,
-        "nextDayLunchPortions": 2
-      },
-      {
-        "date": "10/15/26",
+        "date": "10/20/26",
         "mealId": "red-lentil-coconut-curry",
         "dinnerPortions": 2,
         "nextDayLunchPortions": 2
       },
       {
-        "date": "10/16/26",
-        "mealId": "broccoli-cheddar-chicken-rice",
+        "date": "10/21/26",
+        "mealId": "chicken-tortilla-soup",
+        "dinnerPortions": 2,
+        "nextDayLunchPortions": 2
+      },
+      {
+        "date": "10/22/26",
+        "mealId": "greek-lemon-oregano-chicken-chickpea-bowls",
+        "dinnerPortions": 2,
+        "nextDayLunchPortions": 2
+      },
+      {
+        "date": "10/23/26",
+        "mealId": "mexican-chicken-black-bean-rice-skillet",
         "dinnerPortions": 2,
         "nextDayLunchPortions": 2
       }
     ],
     "uncoveredDinners": [
-      "10/17/26",
-      "10/18/26"
+      "10/24/26",
+      "10/25/26"
     ],
-    "coverage": "20 adult portions: five dinners for two plus five next-day lunches for two. Weekend dinners and other meals are not funded by this basket.",
+    "coverage": "20 adult portions: five dinners for two plus five next-day lunches for two. Dinner on 10/24/26 and 10/25/26 is not covered; do not double-count leftovers.",
     "budget": 70,
     "pretaxStoreSubtotals": {
-      "ALDI": 60.78,
+      "ALDI": 60.98,
       "Kroger": 0,
       "Trader Joe's": 0
     },
-    "pretaxSubtotal": 60.78,
+    "pretaxSubtotal": 60.98,
     "taxRate": 0.0675,
-    "taxEstimate": 4.1,
-    "checkoutEstimate": 64.88,
-    "budgetVariance": -5.12,
-    "sensitivityPlus10Percent": 71.37,
-    "recipeAllocationTotal": 45.87,
+    "taxEstimate": 4.12,
+    "checkoutEstimate": 65.1,
+    "budgetVariance": -4.9,
+    "sensitivityPlus10Percent": 71.61,
+    "recipeAllocationTotal": 44.84,
     "basket": [
       {
         "item": "onion",
@@ -139,21 +139,21 @@ window.WEEKLY_PLAN_META = {
       },
       {
         "item": "chicken breast",
-        "needed_amount": 10,
+        "needed_amount": 8.25,
         "unit": "lb",
         "confirmed_pantry_amount": 0,
-        "package_size": 5,
+        "package_size": 4.2,
         "packages_to_buy": 2,
         "assigned_store": "ALDI",
-        "package_price": 10.95,
-        "extended_purchase_cost": 21.9,
-        "unused_amount": 0,
+        "package_price": 9.2,
+        "extended_purchase_cost": 18.4,
+        "unused_amount": 0.15,
         "source": "https://www.aldi.us/store/aldi/products/19554637-fresh-family-pack-chicken-breasts-per-lb",
-        "price_status": "Observed listing used as estimate for future shopping; not a guaranteed checkout price"
+        "price_status": "Regular listed price proxy; current promotion may lower price; future in-store price and variable pack weight are not guaranteed"
       },
       {
         "item": "long-grain rice, dry",
-        "needed_amount": 900,
+        "needed_amount": 1200,
         "unit": "g",
         "confirmed_pantry_amount": 0,
         "package_size": 1360.78,
@@ -161,191 +161,9 @@ window.WEEKLY_PLAN_META = {
         "assigned_store": "ALDI",
         "package_price": 2.65,
         "extended_purchase_cost": 2.65,
-        "unused_amount": 460.78,
+        "unused_amount": 160.78,
         "source": "https://www.aldi.us/store/aldi/s?k=rice",
-        "price_status": "Observed listing used as estimate for future shopping; not a guaranteed checkout price"
-      },
-      {
-        "item": "bell peppers",
-        "needed_amount": 2,
-        "unit": "whole",
-        "confirmed_pantry_amount": 0,
-        "package_size": 3,
-        "packages_to_buy": 1,
-        "assigned_store": "ALDI",
-        "package_price": 2.99,
-        "extended_purchase_cost": 2.99,
-        "unused_amount": 1,
-        "source": "Agent planning estimate; package size, price and availability unverified",
-        "price_status": "Unverified planning estimate"
-      },
-      {
-        "item": "black beans, drained",
-        "needed_amount": 1,
-        "unit": "15 oz can",
-        "confirmed_pantry_amount": 0,
-        "package_size": 1,
-        "packages_to_buy": 1,
-        "assigned_store": "ALDI",
-        "package_price": 0.85,
-        "extended_purchase_cost": 0.85,
-        "unused_amount": 0,
-        "source": "Agent planning estimate; package size, price and availability unverified",
-        "price_status": "Unverified planning estimate"
-      },
-      {
-        "item": "lime",
-        "needed_amount": 1,
-        "unit": "whole",
-        "confirmed_pantry_amount": 0,
-        "package_size": 1,
-        "packages_to_buy": 1,
-        "assigned_store": "ALDI",
-        "package_price": 0.39,
-        "extended_purchase_cost": 0.39,
-        "unused_amount": 0,
-        "source": "Agent planning estimate; package size, price and availability unverified",
-        "price_status": "Unverified planning estimate"
-      },
-      {
-        "item": "chili powder",
-        "needed_amount": 8,
-        "unit": "g",
-        "confirmed_pantry_amount": 0,
-        "package_size": 70,
-        "packages_to_buy": 1,
-        "assigned_store": "ALDI",
-        "package_price": 1.29,
-        "extended_purchase_cost": 1.29,
-        "unused_amount": 62,
-        "source": "Agent planning estimate; package size, price and availability unverified",
-        "price_status": "Unverified planning estimate"
-      },
-      {
-        "item": "egg noodles, dry",
-        "needed_amount": 340,
-        "unit": "g",
-        "confirmed_pantry_amount": 0,
-        "package_size": 340,
-        "packages_to_buy": 1,
-        "assigned_store": "ALDI",
-        "package_price": 1.69,
-        "extended_purchase_cost": 1.69,
-        "unused_amount": 0,
-        "source": "Agent planning estimate; package size, price and availability unverified",
-        "price_status": "Unverified planning estimate"
-      },
-      {
-        "item": "carrots",
-        "needed_amount": 454,
-        "unit": "g",
-        "confirmed_pantry_amount": 0,
-        "package_size": 907,
-        "packages_to_buy": 1,
-        "assigned_store": "ALDI",
-        "package_price": 1.79,
-        "extended_purchase_cost": 1.79,
-        "unused_amount": 453,
-        "source": "Agent planning estimate; package size, price and availability unverified",
-        "price_status": "Unverified planning estimate"
-      },
-      {
-        "item": "lemon",
-        "needed_amount": 1,
-        "unit": "whole",
-        "confirmed_pantry_amount": 0,
-        "package_size": 1,
-        "packages_to_buy": 1,
-        "assigned_store": "ALDI",
-        "package_price": 0.69,
-        "extended_purchase_cost": 0.69,
-        "unused_amount": 0,
-        "source": "Agent planning estimate; package size, price and availability unverified",
-        "price_status": "Unverified planning estimate"
-      },
-      {
-        "item": "Italian seasoning",
-        "needed_amount": 6,
-        "unit": "g",
-        "confirmed_pantry_amount": 0,
-        "package_size": 21,
-        "packages_to_buy": 1,
-        "assigned_store": "ALDI",
-        "package_price": 1.29,
-        "extended_purchase_cost": 1.29,
-        "unused_amount": 15,
-        "source": "Agent planning estimate; package size, price and availability unverified",
-        "price_status": "Unverified planning estimate"
-      },
-      {
-        "item": "pasta, dry",
-        "needed_amount": 454,
-        "unit": "g",
-        "confirmed_pantry_amount": 0,
-        "package_size": 454,
-        "packages_to_buy": 1,
-        "assigned_store": "ALDI",
-        "package_price": 0.99,
-        "extended_purchase_cost": 0.99,
-        "unused_amount": 0,
-        "source": "Agent planning estimate; package size, price and availability unverified",
-        "price_status": "Unverified planning estimate"
-      },
-      {
-        "item": "crushed tomatoes",
-        "needed_amount": 1,
-        "unit": "28 oz can",
-        "confirmed_pantry_amount": 0,
-        "package_size": 1,
-        "packages_to_buy": 1,
-        "assigned_store": "ALDI",
-        "package_price": 1.49,
-        "extended_purchase_cost": 1.49,
-        "unused_amount": 0,
-        "source": "Agent planning estimate; package size, price and availability unverified",
-        "price_status": "Unverified planning estimate"
-      },
-      {
-        "item": "milk",
-        "needed_amount": 16,
-        "unit": "fl oz",
-        "confirmed_pantry_amount": 0,
-        "package_size": 64,
-        "packages_to_buy": 1,
-        "assigned_store": "ALDI",
-        "package_price": 1.89,
-        "extended_purchase_cost": 1.89,
-        "unused_amount": 48,
-        "source": "Agent planning estimate; package size, price and availability unverified",
-        "price_status": "Unverified planning estimate"
-      },
-      {
-        "item": "frozen spinach",
-        "needed_amount": 680,
-        "unit": "g",
-        "confirmed_pantry_amount": 0,
-        "package_size": 340,
-        "packages_to_buy": 2,
-        "assigned_store": "ALDI",
-        "package_price": 1.29,
-        "extended_purchase_cost": 2.58,
-        "unused_amount": 0,
-        "source": "Agent planning estimate; package size, price and availability unverified",
-        "price_status": "Unverified planning estimate"
-      },
-      {
-        "item": "cheddar cheese",
-        "needed_amount": 227,
-        "unit": "g",
-        "confirmed_pantry_amount": 0,
-        "package_size": 227,
-        "packages_to_buy": 1,
-        "assigned_store": "ALDI",
-        "package_price": 1.79,
-        "extended_purchase_cost": 1.79,
-        "unused_amount": 0,
-        "source": "Agent planning estimate; package size, price and availability unverified",
-        "price_status": "Unverified planning estimate"
+        "price_status": "Observed listing used as estimate; future price and availability are not guaranteed"
       },
       {
         "item": "red lentils, dry",
@@ -376,16 +194,16 @@ window.WEEKLY_PLAN_META = {
         "price_status": "Unverified planning estimate"
       },
       {
-        "item": "curry powder",
-        "needed_amount": 10,
+        "item": "frozen spinach",
+        "needed_amount": 340,
         "unit": "g",
         "confirmed_pantry_amount": 0,
-        "package_size": 56,
+        "package_size": 340,
         "packages_to_buy": 1,
         "assigned_store": "ALDI",
-        "package_price": 1.99,
-        "extended_purchase_cost": 1.99,
-        "unused_amount": 46,
+        "package_price": 1.29,
+        "extended_purchase_cost": 1.29,
+        "unused_amount": 0,
         "source": "Agent planning estimate; package size, price and availability unverified",
         "price_status": "Unverified planning estimate"
       },
@@ -402,24 +220,232 @@ window.WEEKLY_PLAN_META = {
         "unused_amount": 0,
         "source": "Agent planning estimate; package size, price and availability unverified",
         "price_status": "Unverified planning estimate"
+      },
+      {
+        "item": "milk",
+        "needed_amount": 8,
+        "unit": "fl oz",
+        "confirmed_pantry_amount": 0,
+        "package_size": 64,
+        "packages_to_buy": 1,
+        "assigned_store": "ALDI",
+        "package_price": 1.89,
+        "extended_purchase_cost": 1.89,
+        "unused_amount": 56,
+        "source": "Agent planning estimate; package size, price and availability unverified",
+        "price_status": "Unverified planning estimate"
+      },
+      {
+        "item": "cheddar cheese",
+        "needed_amount": 170,
+        "unit": "g",
+        "confirmed_pantry_amount": 0,
+        "package_size": 227,
+        "packages_to_buy": 1,
+        "assigned_store": "ALDI",
+        "package_price": 1.79,
+        "extended_purchase_cost": 1.79,
+        "unused_amount": 57,
+        "source": "Agent planning estimate; package size, price and availability unverified",
+        "price_status": "Unverified planning estimate"
+      },
+      {
+        "item": "Italian seasoning",
+        "needed_amount": 2,
+        "unit": "g",
+        "confirmed_pantry_amount": 0,
+        "package_size": 21,
+        "packages_to_buy": 1,
+        "assigned_store": "ALDI",
+        "package_price": 1.29,
+        "extended_purchase_cost": 1.29,
+        "unused_amount": 19,
+        "source": "Agent planning estimate; package size, price and availability unverified",
+        "price_status": "Unverified planning estimate"
+      },
+      {
+        "item": "curry powder",
+        "needed_amount": 10,
+        "unit": "g",
+        "confirmed_pantry_amount": 0,
+        "package_size": 56,
+        "packages_to_buy": 1,
+        "assigned_store": "ALDI",
+        "package_price": 1.99,
+        "extended_purchase_cost": 1.99,
+        "unused_amount": 46,
+        "source": "Agent planning estimate; package size, price and availability unverified",
+        "price_status": "Unverified planning estimate"
+      },
+      {
+        "item": "black beans, drained",
+        "needed_amount": 4,
+        "unit": "15 oz can",
+        "confirmed_pantry_amount": 0,
+        "package_size": 1,
+        "packages_to_buy": 4,
+        "assigned_store": "ALDI",
+        "package_price": 0.85,
+        "extended_purchase_cost": 3.4,
+        "unused_amount": 0,
+        "source": "Agent planning estimate; package size, price and availability unverified",
+        "price_status": "Unverified planning estimate"
+      },
+      {
+        "item": "crushed tomatoes",
+        "needed_amount": 1,
+        "unit": "28 oz can",
+        "confirmed_pantry_amount": 0,
+        "package_size": 1,
+        "packages_to_buy": 1,
+        "assigned_store": "ALDI",
+        "package_price": 1.49,
+        "extended_purchase_cost": 1.49,
+        "unused_amount": 0,
+        "source": "Agent planning estimate; package size, price and availability unverified",
+        "price_status": "Unverified planning estimate"
+      },
+      {
+        "item": "diced tomatoes",
+        "needed_amount": 1,
+        "unit": "28 oz can",
+        "confirmed_pantry_amount": 0,
+        "package_size": 1,
+        "packages_to_buy": 1,
+        "assigned_store": "ALDI",
+        "package_price": 1.49,
+        "extended_purchase_cost": 1.49,
+        "unused_amount": 0,
+        "source": "Agent planning estimate; package size, price and availability unverified",
+        "price_status": "Unverified planning estimate"
+      },
+      {
+        "item": "chili powder",
+        "needed_amount": 16,
+        "unit": "g",
+        "confirmed_pantry_amount": 0,
+        "package_size": 70,
+        "packages_to_buy": 1,
+        "assigned_store": "ALDI",
+        "package_price": 1.29,
+        "extended_purchase_cost": 1.29,
+        "unused_amount": 54,
+        "source": "Agent planning estimate; package size, price and availability unverified",
+        "price_status": "Unverified planning estimate"
+      },
+      {
+        "item": "tortillas",
+        "needed_amount": 4,
+        "unit": "whole",
+        "confirmed_pantry_amount": 0,
+        "package_size": 10,
+        "packages_to_buy": 1,
+        "assigned_store": "ALDI",
+        "package_price": 1.99,
+        "extended_purchase_cost": 1.99,
+        "unused_amount": 6,
+        "source": "Agent planning estimate; package size, price and availability unverified",
+        "price_status": "Unverified planning estimate"
+      },
+      {
+        "item": "lime",
+        "needed_amount": 1,
+        "unit": "whole",
+        "confirmed_pantry_amount": 0,
+        "package_size": 1,
+        "packages_to_buy": 1,
+        "assigned_store": "ALDI",
+        "package_price": 0.39,
+        "extended_purchase_cost": 0.39,
+        "unused_amount": 0,
+        "source": "Agent planning estimate; package size, price and availability unverified",
+        "price_status": "Unverified planning estimate"
+      },
+      {
+        "item": "lemon",
+        "needed_amount": 1,
+        "unit": "whole",
+        "confirmed_pantry_amount": 0,
+        "package_size": 1,
+        "packages_to_buy": 1,
+        "assigned_store": "ALDI",
+        "package_price": 0.69,
+        "extended_purchase_cost": 0.69,
+        "unused_amount": 0,
+        "source": "Agent planning estimate; package size, price and availability unverified",
+        "price_status": "Unverified planning estimate"
+      },
+      {
+        "item": "chickpeas, drained",
+        "needed_amount": 1,
+        "unit": "15 oz can",
+        "confirmed_pantry_amount": 0,
+        "package_size": 1,
+        "packages_to_buy": 1,
+        "assigned_store": "ALDI",
+        "package_price": 0.85,
+        "extended_purchase_cost": 0.85,
+        "unused_amount": 0,
+        "source": "Agent planning estimate; package size, price and availability unverified",
+        "price_status": "Unverified planning estimate"
+      },
+      {
+        "item": "dried oregano",
+        "needed_amount": 2,
+        "unit": "g",
+        "confirmed_pantry_amount": 0,
+        "package_size": 28,
+        "packages_to_buy": 1,
+        "assigned_store": "ALDI",
+        "package_price": 1.29,
+        "extended_purchase_cost": 1.29,
+        "unused_amount": 26,
+        "source": "Agent planning estimate; package size, price and availability unverified",
+        "price_status": "Unverified planning estimate"
+      },
+      {
+        "item": "bell peppers",
+        "needed_amount": 1,
+        "unit": "whole",
+        "confirmed_pantry_amount": 0,
+        "package_size": 3,
+        "packages_to_buy": 1,
+        "assigned_store": "ALDI",
+        "package_price": 2.99,
+        "extended_purchase_cost": 2.99,
+        "unused_amount": 2,
+        "source": "Agent planning estimate; package size, price and availability unverified",
+        "price_status": "Unverified planning estimate"
+      },
+      {
+        "item": "ground cumin",
+        "needed_amount": 2,
+        "unit": "g",
+        "confirmed_pantry_amount": 0,
+        "package_size": 28,
+        "packages_to_buy": 1,
+        "assigned_store": "ALDI",
+        "package_price": 1.29,
+        "extended_purchase_cost": 1.29,
+        "unused_amount": 26,
+        "source": "Agent planning estimate; package size, price and availability unverified",
+        "price_status": "Unverified planning estimate"
       }
     ],
     "assumptions": [
-      "No pantry stock deducted. Full packages charged once; water from home tap at no incremental shopping cost.",
-      "All groceries assigned to ALDI, 405 American Rd, Nashville, in-store. Dry red lentils and curry powder availability is unverified; obtain at Kroger if absent and expect a price change.",
-      "Chicken: budget two approximately 5 lb packages at regular observed $2.19/lb, not the $1.99/lb promotion with unknown end date. Weights and future prices may differ. Freeze surplus promptly.",
-      "Rice: observed 48 oz bag at $2.65. Other package prices are reasonable estimates, not claimed local observations.",
-      "No loyalty, coupon, multi-buy or pantry savings counted. The $1.79/lb chicken offer available 10/21 is excluded.",
-      "One-stop basket favored. Kroger observed fresh chicken $2.49/lb and Trader Joe’s basmati $2.99/2 lb do not establish a cheaper equivalent complete basket; no savings claim.",
-      "Store subtotals and package rounding are stored here; existing tabs display ingredient-use quantities and allocation totals, not a live package checkout calculator. This UI limitation was accepted for this estimate-and-publish run.",
-      "Chicken packages are variable weight: select a combined weight of at least 10 lb. The estimate charges 10 lb; each additional 0.1 lb adds about $0.23 after tax."
+      "No pantry stock deducted. Full packages are charged once, and shared ingredients are not double-counted. Tap water has no incremental shopping cost.",
+      "All purchases are assigned to one in-store ALDI basket for simplicity. The mapping of the original 'ALDI, Charlotte Pike' label to the 405 American Rd candidate branch remains a proposed interpretation, not a confirmed branch match.",
+      "Chicken estimate uses two approximately 4.2 lb family packs at the regular listed-price proxy of $2.19/lb; select a combined package weight of at least 8.25 lb. The current online promotion may lower the cost, but future price and variable weight are not guaranteed.",
+      "All other package prices are explicit planning estimates where no branch-specific live price was confirmed. No loyalty, coupon, or multi-buy savings are counted.",
+      "Kroger and Trader Joe's are not required for this basket; no verified lower-cost complete basket was established at those stores.",
+      "The expected checkout estimate is under $70; a +10% price sensitivity scenario is above $70, so the estimate has limited price-shock margin."
     ],
     "taxSources": [
       "https://revenue.support.tn.gov/hc/en-us/articles/360058680751--SUT-53-Food-and-Food-Ingredients-Definition-and-Tax-Rate",
       "https://www.tn.gov/content/dam/tn/revenue/documents/notices/sales/sales24-11.pdf",
       "https://www.tn.gov/revenue/news/2026/8/24/important-notice--davidson-county-food-tax-rate-decrease.html"
     ],
-    "taxNote": "4% state plus 2.75% local on 10/12/26. Announced local food rate reduction to 1.75% begins 11/01/26, after this shopping date.",
+    "taxNote": "Estimated food tax for shopping on 10/19/26: 4% state plus 2.75% local. The announced Davidson County local food-rate reduction to 1.75% begins 11/01/26, after this shopping date.",
     "nutritionFactors": {
       "chicken breast": {
         "gramsProteinPerUnit": 93.148433125,
@@ -536,6 +562,22 @@ window.WEEKLY_PLAN_META = {
       "water": {
         "gramsProteinPerUnit": 0,
         "unit": "ml"
+      },
+      "chickpeas, drained": {
+        "gramsProteinPerUnit": 21,
+        "unit": "15 oz can"
+      },
+      "diced tomatoes": {
+        "gramsProteinPerUnit": 8,
+        "unit": "28 oz can"
+      },
+      "dried oregano": {
+        "gramsProteinPerUnit": 0.1,
+        "unit": "g"
+      },
+      "ground cumin": {
+        "gramsProteinPerUnit": 0.1,
+        "unit": "g"
       }
     },
     "nutritionSources": [
@@ -552,10 +594,10 @@ window.WEEKLY_PLAN_META = {
         "basis": "4 g/45 g dry basmati; rounded down to 0.08 g/g as generic white rice proxy"
       }
     ],
-    "nutritionCaveat": "Other ingredient factors are approximate generic composition assumptions, not verified package-specific labels. Values rounded to nearest gram; raw/dry quantities prevent cooked-weight confusion. All candidate shortfalls are disclosed.",
+    "nutritionCaveat": "Protein estimates use raw meat and dry grain/legume quantities plus generic ingredient factors; package-specific labels are not verified. Values are approximate and shortfalls are disclosed.",
     "foodSafetySource": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety",
-    "emailStatus": "Not configured: no sender, recipients, service or send mode in planner-context.yaml; no message sent.",
-    "proteinTradeoff": "Four chicken dishes use the full estimated 10 lb purchase. Portions estimate 71, 71, 84, 37 and 81 g protein. Three meals fall short by 9, 9 and 43 g. Adding about 2.7 lb more chicken across the deficient meals (including the lentil curry) would approximately meet 80 g for all portions but require a third estimated 5 lb pack: checkout about $76.57, $6.57 over budget. This is an estimate, not a feasibility proof for every possible menu."
+    "emailStatus": "Not configured: no sender, recipients, service or send mode in planner context; no message sent.",
+    "proteinTradeoff": "Recommended portions estimate 81, 37, 62, 64, and 55 g protein respectively. Four meals fall short of the 80 g target by 16–43 g per portion. Increasing every shortfall would require additional protein purchases and likely exceed the $70 basket estimate; this tradeoff is disclosed."
   }
 };
 
@@ -982,7 +1024,7 @@ window.WEEKLY_MEALS = [
     "id": "broccoli-cheddar-chicken-rice",
     "name": "Broccoli Cheddar Chicken Rice",
     "cuisine": "American",
-    "newMeal": true,
+    "newMeal": false,
     "servings": 4,
     "proteinPerServing": 81,
     "estimatedCost": 9.36,
@@ -1198,13 +1240,13 @@ window.WEEKLY_MEALS = [
     ]
   },
   {
-    "id": "chicken-saag",
-    "name": "Chicken Saag with Rice",
-    "cuisine": "Indian-inspired",
-    "newMeal": false,
+    "id": "greek-lemon-oregano-chicken-chickpea-bowls",
+    "name": "Greek Lemon-Oregano Chicken & Chickpea Rice Bowls",
+    "cuisine": "Greek-inspired",
+    "newMeal": true,
     "servings": 4,
-    "proteinPerServing": 60,
-    "estimatedCost": 8.54,
+    "proteinPerServing": 64,
+    "estimatedCost": 9.4,
     "ingredients": [
       {
         "item": "onion",
@@ -1238,7 +1280,7 @@ window.WEEKLY_MEALS = [
       },
       {
         "item": "chicken breast",
-        "quantity": 2,
+        "quantity": 2.25,
         "unit": "lb",
         "store": "ALDI"
       },
@@ -1249,26 +1291,26 @@ window.WEEKLY_MEALS = [
         "store": "ALDI"
       },
       {
-        "item": "frozen spinach",
-        "quantity": 680,
-        "unit": "g",
+        "item": "chickpeas, drained",
+        "quantity": 1,
+        "unit": "15 oz can",
         "store": "ALDI"
       },
       {
-        "item": "milk",
-        "quantity": 8,
-        "unit": "fl oz",
+        "item": "lemon",
+        "quantity": 1,
+        "unit": "whole",
         "store": "ALDI"
       },
       {
-        "item": "curry powder",
-        "quantity": 10,
+        "item": "dried oregano",
+        "quantity": 2,
         "unit": "g",
         "store": "ALDI"
       },
       {
         "item": "water",
-        "quantity": 900,
+        "quantity": 600,
         "unit": "ml",
         "store": "Home tap"
       }
@@ -1277,25 +1319,18 @@ window.WEEKLY_MEALS = [
       "prepMinutes": 15,
       "cookMinutes": 30,
       "steps": [
-        "Dice onion, mince garlic and cut chicken into small pieces. Rinse rice, bring to a boil with 600 ml water, cover and simmer 18 minutes; rest 5 minutes.",
-        "Heat oil in a skillet over medium-high heat; soften onion 5 minutes, then add chicken and cook 6 minutes. Add garlic, curry powder, salt and pepper for 1 minute.",
-        "Add spinach and remaining 300 ml water. Cover and simmer 12–15 minutes, stirring, until chicken reaches 165°F and spinach is hot. Stir in milk over low heat for 2 minutes; serve with rice.",
-        "Divide into 4 equal adult portions: 2 for dinner and 2 for next-day lunch. Refrigerate in shallow containers within 2 hours, keep at 40°F or below, use within 3–4 days or freeze, and reheat to 165°F. Freeze raw poultry not used within 1–2 days and thaw in the refrigerator.",
-        "Planning estimate: approximately 60 g protein per equal portion, 20 g below the 80 g goal. Ingredient-use cost is an estimate, not a checkout quote."
+        "Cook the rice according to the package directions.",
+        "Season the chicken with lemon juice, oregano, minced garlic, salt, and pepper.",
+        "Heat the oil in a large skillet and cook the chicken until browned and the thickest pieces reach 165°F.",
+        "Add the drained chickpeas and a splash of water; warm through and scrape the browned pan juices into the mixture.",
+        "Serve the lemon-oregano chicken and chickpeas over rice, finishing with the remaining lemon juice."
       ]
     },
     "nutrition": {
-      "basis": "Raw meat and dry grain weights; approximate label proxies and generic ingredient factors in WEEKLY_PLAN_META.planning.nutritionFactors. Equal dinner/lunch portions.",
-      "proteinShortfallPerServing": 20
+      "basis": "Raw chicken breast, dry rice, and canned chickpea quantities divided evenly among four adult portions; generic nutrition factors are approximate.",
+      "proteinShortfallPerServing": 16
     },
-    "sources": [
-      {
-        "title": "Independent adaptation of previously planned household meal",
-        "url": "https://github.com/n-melt/meal-plan/tree/ee8e6c7ba4d9e6268b2e4be8f819b3ac834aac4f",
-        "accessed": "10/09/26",
-        "adaptations": "Rewritten quantities, method, protein calculation and estimated costs for four adult portions; not attributed to an external recipe author."
-      }
-    ]
+    "sources": []
   },
   {
     "id": "thai-peanut-chicken-noodles",
@@ -1510,13 +1545,13 @@ window.WEEKLY_MEALS = [
     ]
   },
   {
-    "id": "turkey-bolognese",
-    "name": "Turkey Bolognese",
-    "cuisine": "Italian-inspired",
-    "newMeal": false,
+    "id": "mexican-chicken-black-bean-rice-skillet",
+    "name": "Mexican Chicken & Black Bean Rice Skillet",
+    "cuisine": "Mexican-inspired",
+    "newMeal": true,
     "servings": 4,
-    "proteinPerServing": 62,
-    "estimatedCost": 11.73,
+    "proteinPerServing": 55,
+    "estimatedCost": 9.85,
     "ingredients": [
       {
         "item": "onion",
@@ -1549,70 +1584,69 @@ window.WEEKLY_MEALS = [
         "store": "ALDI"
       },
       {
-        "item": "ground turkey, raw",
-        "quantity": 2,
+        "item": "chicken breast",
+        "quantity": 1.5,
         "unit": "lb",
         "store": "ALDI"
       },
       {
-        "item": "pasta, dry",
-        "quantity": 454,
+        "item": "long-grain rice, dry",
+        "quantity": 300,
         "unit": "g",
         "store": "ALDI"
       },
       {
-        "item": "crushed tomatoes",
+        "item": "black beans, drained",
+        "quantity": 2,
+        "unit": "15 oz can",
+        "store": "ALDI"
+      },
+      {
+        "item": "diced tomatoes",
         "quantity": 1,
         "unit": "28 oz can",
         "store": "ALDI"
       },
       {
-        "item": "carrots",
-        "quantity": 227,
-        "unit": "g",
+        "item": "bell peppers",
+        "quantity": 1,
+        "unit": "whole",
         "store": "ALDI"
       },
       {
-        "item": "Italian seasoning",
-        "quantity": 3,
-        "unit": "g",
-        "store": "ALDI"
-      },
-      {
-        "item": "milk",
+        "item": "chili powder",
         "quantity": 8,
-        "unit": "fl oz",
+        "unit": "g",
+        "store": "ALDI"
+      },
+      {
+        "item": "ground cumin",
+        "quantity": 2,
+        "unit": "g",
         "store": "ALDI"
       },
       {
         "item": "water",
-        "quantity": 3250,
+        "quantity": 600,
         "unit": "ml",
         "store": "Home tap"
       }
     ],
     "recipe": {
       "prepMinutes": 15,
-      "cookMinutes": 40,
+      "cookMinutes": 30,
       "steps": [
-        "Dice onion and carrots finely and mince garlic. Heat oil in a deep pan over medium heat; cook onion and carrots 7 minutes. Add turkey and break into crumbs; brown for 8 minutes. Add garlic and seasoning for 1 minute.",
-        "Add tomatoes, milk, salt, pepper and 250 ml water. Simmer uncovered 20 minutes, stirring, until turkey reaches 165°F and sauce thickens.",
-        "Meanwhile cook pasta in the remaining 3000 ml boiling water according to the package, usually 9–12 minutes. Drain and combine with sauce.",
-        "Divide into 4 equal adult portions: 2 for dinner and 2 for next-day lunch. Refrigerate in shallow containers within 2 hours, keep at 40°F or below, use within 3–4 days or freeze, and reheat to 165°F. Freeze raw poultry not used within 1–2 days and thaw in the refrigerator.",
-        "Planning estimate: approximately 62 g protein per equal portion, 18 g below the 80 g goal. Ingredient-use cost is an estimate, not a checkout quote."
+        "Cook the rice according to the package directions.",
+        "Heat the oil in a large skillet and soften the diced onion and bell pepper; add minced garlic.",
+        "Add diced chicken, salt, pepper, chili powder, and cumin; cook, stirring, until the chicken reaches 165°F.",
+        "Stir in the drained black beans, diced tomatoes, and a splash of water; simmer until hot and slightly thickened.",
+        "Serve the chicken-and-bean mixture over rice and divide into four equal portions."
       ]
     },
     "nutrition": {
-      "basis": "Raw meat and dry grain weights; approximate label proxies and generic ingredient factors in WEEKLY_PLAN_META.planning.nutritionFactors. Equal dinner/lunch portions.",
-      "proteinShortfallPerServing": 18
+      "basis": "Raw chicken breast, dry rice, and canned black beans divided evenly among four adult portions; generic nutrition factors are approximate.",
+      "proteinShortfallPerServing": 25
     },
-    "sources": [
-      {
-        "title": "Independent adaptation of previously planned household meal",
-        "url": "https://github.com/n-melt/meal-plan/tree/ee8e6c7ba4d9e6268b2e4be8f819b3ac834aac4f",
-        "accessed": "10/09/26",
-        "adaptations": "Rewritten quantities, method, protein calculation and estimated costs for four adult portions; not attributed to an external recipe author."
-      }
-    ]
+    "sources": []
   }
 ];
