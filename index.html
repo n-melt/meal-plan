@@ -92,6 +92,7 @@
   <header>
     <div>
       <h1>Weekly Meal Planner</h1>
+      <div class="sub" id="currentWeekDates"></div>
       <div class="sub">Select any number of weekly meal options. Finalizing hides unselected meals and rebuilds grocery and recipe views from only your selections.</div>
     </div>
     <div class="pill">Nashville · household of 2 · 4 portions/meal</div>
@@ -568,6 +569,13 @@ function formatHistoryDate(dateString){
 }
 
 function renderAll(){
+  const meta = window.WEEKLY_PLAN_META || {};
+  $('#currentWeekDates').textContent =
+    [meta.weekStart, meta.weekEnd]
+      .filter(Boolean)
+      .map(formatHistoryDate)
+      .join(' – ');
+
   normalizeStateToCurrentMeals();
   renderMeals();
   renderSummary();
